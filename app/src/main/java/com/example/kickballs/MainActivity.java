@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kickballs.views.CustomView;
 
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private List<Button> mButtons = new ArrayList<Button>(9);
     private Button mButton1, mButton2, mButton3, mButton4, mButton5, mButton6, mButton7, mButton8, mButton9;
     public Button startButton, stopButton, resetButton, mButtonLogin;
-    private TextView mTextView;
+    private TextView mTextView, mCountDownText;
     private final int minimum = 1, maximum = 10;
     private int score = 0;
     private int counter;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Handler buttonHandler;
     Drawable redBall, whiteBall;
     MediaPlayer mediaPlayer;
+    CountDownTimer DisplayTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton9 = findViewById(R.id.btn_9);
 
         mTextView = findViewById(R.id.score);
+        mCountDownText = findViewById(R.id.countdown);
+
         resetButton = findViewById(R.id.btn_reset);
         startButton = findViewById(R.id.btn_start);
         stopButton = findViewById(R.id.btn_stop);
@@ -88,7 +94,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mediaPlayer==null){
+                    mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.kick_balls);
+                    mediaPlayer.start();
+                }
+
+                if(timer!=null)
+                    timer.cancel();
                 timer = new Timer();
+
+                if (DisplayTime == null) {
+                    DisplayTime = new CountDownTimer(60000, 1000) {
+
+                        public void onTick(long millisUntilFinished) {
+                            mCountDownText.setText("TIME - " + millisUntilFinished / 1000);
+                        }
+
+                        public void onFinish() {
+                            timer.cancel();
+                            Toast toast = Toast.makeText(getApplicationContext(), "TIME UP!", Toast.LENGTH_SHORT);
+                            toast.show();
+                            mCountDownText.setText("TIME - 60");
+                            DisplayTime = null;
+                            if(mediaPlayer!=null){
+                                mediaPlayer.stop();
+                                mediaPlayer=null;
+                            }
+                        }
+                    };
+                    DisplayTime.start();
+                }
+
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
@@ -106,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         mButtons.get(randomNumber - 1).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                mTextView.setText("Score - " + String.valueOf(++score));
+                                mTextView.setText("SCORE - " + String.valueOf(++score));
                                 mButtons.get(randomNumber - 1).setOnClickListener(null);
                             }
                         });
@@ -133,7 +169,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer.cancel();
+                if(mediaPlayer!=null){
+                    mediaPlayer.stop();
+                    mediaPlayer=null;
+                }
+
+                if(DisplayTime!=null){
+                    DisplayTime.cancel();
+                    DisplayTime.onFinish();
+                }
             }
         });
     }
@@ -141,6 +185,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         score = 0;
-        mTextView.setText("Score - " + score);
+        mTextView.setText("SCORE - " + score);
+    }
+
+    public void login(View view){
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context, "LOGIN BUTTON CLICKED", Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

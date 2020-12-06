@@ -124,19 +124,43 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp">
 
-        <TextView
-            android:id="@+id/score"
+        <LinearLayout
+            android:id="@+id/texts"
+            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="Score - 0"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="#D0D0D0"
+            android:text="SCORE - 0"
+            android:padding="10dp"
+            android:textSize="25dp"
+            android:textColor="#383838"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/countdown"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="#D0D0D0"
+            android:text="TIME - 60"
             android:layout_centerHorizontal="true"
-            android:textSize="30dp"
-            android:layout_marginBottom="20dp"/>
+            android:padding="10dp"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="#383838"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/start_stop"
-            android:layout_below="@+id/score"
+            android:layout_below="@+id/texts"
             android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -178,16 +202,9 @@
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:layout_margin="10dp"
+                android:onClick="login"
                 />
 
         </LinearLayout>
     </RelativeLayout>
-
-
-    <!--    <com.example.kickballs.views.CustomView-->
-    <!--        android:id="@+id/customView"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="400dp"-->
-    <!--        android:layout_below="@+id/buttons_list"-->
-    <!--        />-->
 </RelativeLayout>
