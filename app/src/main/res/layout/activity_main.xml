@@ -202,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:layout_margin="10dp"
-                android:onClick="login"
+                android:onClick="loginFromGame"
                 />
 
         </LinearLayout>

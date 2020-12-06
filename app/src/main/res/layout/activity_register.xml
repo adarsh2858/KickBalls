@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register"
-    android:background="@drawable/iphone_background">
+    android:background="@drawable/green_grass"
+    android:backgroundTint="#148414"
+    android:backgroundTintMode="multiply">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Authenticator App"
+        android:text="User Registration"
         android:textColor="@android:color/white"
         android:textAlignment="center"
         android:textSize="40dp"
@@ -26,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@android:color/white"
-        android:hint="Full Name"
+        android:hint="@string/prompt_username"
         android:layout_margin="10dp"
         android:textColorHint="@android:color/white"
         android:inputType="text"
@@ -40,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:hint="Email"
+        android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
         android:padding="15dp"
         android:textColorHint="@android:color/white"
@@ -62,15 +64,31 @@
         app:layout_constraintVertical_bias="0.07999998"
         tools:layout_editor_absoluteX="10dp" />
 
-    <Button
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:text="REGISTER"
-        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3">
 
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:text="REGISTER"
+            android:textColor="#fff"/>
+
+        <Button
+            android:id="@+id/btn_guest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:text="GUEST"
+            android:textColor="#fff"
+            android:layout_toRightOf="@+id/btn_register"
+            android:layout_marginLeft="20dp"/>
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

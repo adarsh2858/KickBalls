@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kickballs.ui.login.LoginActivity;
 import com.example.kickballs.views.CustomView;
 
 import java.util.ArrayList;
@@ -46,8 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (mediaPlayer == null){
         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.kick_balls);
         mediaPlayer.start();
+        }
 
         mButton1 = findViewById(R.id.btn_1);
         mButton2 = findViewById(R.id.btn_2);
@@ -188,9 +192,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTextView.setText("SCORE - " + score);
     }
 
-    public void login(View view){
+    // Login method to switch view to login page
+    public void loginFromGame(View view){
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "LOGIN BUTTON CLICKED", Toast.LENGTH_SHORT);
         toast.show();
+
+        mediaPlayer.stop();
+        mediaPlayer=null;
+
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 }
