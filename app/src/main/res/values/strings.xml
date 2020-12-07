@@ -4,7 +4,7 @@
     <string name="user_registration">Create a new account</string>
     <string name="user_login">Member Login</string>
     <string name="register">Register</string>
-    <string name="guest">Continue as Guest</string>
+    <string name="guest">Guest</string>
     <string name="initialize_score">SCORE - 0</string>
     <string name="initialize_time">TIME - 60</string>
     <string name="start">Start</string>

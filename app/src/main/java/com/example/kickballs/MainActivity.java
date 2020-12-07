@@ -213,13 +213,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Toast.makeText(getApplicationContext(), "RESET ALL", Toast.LENGTH_SHORT).show();
         score = 0;
         mTextView.setText("SCORE - " + score);
         startPauseButton.setText("Start");
 
         if(DisplayTime!=null){
             timer.cancel();
-            Toast.makeText(getApplicationContext(), "RESET ALL", Toast.LENGTH_SHORT).show();
             mCountDownText.setText("TIME - 60");
             DisplayTime.cancel();
             DisplayTime = null;

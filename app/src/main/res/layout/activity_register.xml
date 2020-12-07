@@ -27,7 +27,7 @@
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/rounded_edit_text"
         android:hint="@string/prompt_username"
         android:layout_margin="20dp"
@@ -40,7 +40,7 @@
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:hint="@string/prompt_email"
         android:background="@drawable/rounded_edit_text"
@@ -49,6 +49,18 @@
         android:textColorHint="@color/lightBlack"
         app:layout_constraintBottom_toTopOf="@id/password"
         app:layout_constraintTop_toBottomOf="@+id/username"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintBottom_toBottomOf="@id/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/password"
@@ -76,7 +88,7 @@
             android:id="@+id/btn_register"
             android:layout_width="125dp"
             android:layout_height="50dp"
-            android:background="@drawable/light_wood"
+            android:background="@drawable/light_wood_button"
             android:text="@string/register"
             android:textColor="@color/lightBlack"
             android:textSize="20sp"/>
@@ -85,25 +97,13 @@
             android:id="@+id/btn_guest"
             android:layout_width="125dp"
             android:layout_height="50dp"
-            android:background="@drawable/light_wood"
+            android:background="@drawable/light_wood_button"
             android:text="@string/guest"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textColor="@color/lightBlack"
             android:layout_toEndOf="@+id/btn_register"
             android:layout_marginStart="20dp"/>
 
     </RelativeLayout>
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/register_buttons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
