@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.kickballs.ui.login.LoginActivity;
 import com.example.kickballs.views.CustomView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,17 +32,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private List<Button> mButtons = new ArrayList<Button>(9);
     private Button mButton1, mButton2, mButton3, mButton4, mButton5, mButton6, mButton7, mButton8, mButton9;
-    public Button startButton, stopButton, resetButton, mButtonLogin;
+    public Button startPauseButton, stopButton, resetButton, mButtonLogin;
     private TextView mTextView, mCountDownText;
     private final int minimum = 1, maximum = 10;
     private int score = 0;
     private int counter;
+
     Timer timer;
     Timer buttonTimer;
     Handler buttonHandler;
     Drawable redBall, whiteBall;
     MediaPlayer mediaPlayer;
     CountDownTimer DisplayTime;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCountDownText = findViewById(R.id.countdown);
 
         resetButton = findViewById(R.id.btn_reset);
-        startButton = findViewById(R.id.btn_start);
+        startPauseButton = findViewById(R.id.btn_start);
         stopButton = findViewById(R.id.btn_stop);
 
         //  To fetch drawables with theme attributes
@@ -75,6 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         whiteBall = getResources().getDrawable(R.drawable.white_ball);
 
         mButtonLogin = findViewById(R.id.btn_login);
+        fAuth = FirebaseAuth.getInstance();
+
+        if (fAuth.getCurrentUser() != null)
+            mButtonLogin.setText("SIGN OUT");
 
 //        for(int i = 1; i<=9;i++){
 //            int id = getResources().getIdentifier()
@@ -95,9 +102,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonHandler = new Handler();
         counter=0;
 
-        startButton.setOnClickListener(new View.OnClickListener() {
+        startPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(startPauseButton.getText().equals("Start")){
+                    Log.i("Started", startPauseButton.getText().toString());
+                    startPauseButton.setText("Pause");
+//                    timerStart(15*1000);
+                } else if (startPauseButton.getText().equals("Pause")){
+                    Log.i("Paused", startPauseButton.getText().toString());
+                    startPauseButton.setText("Resume");
+//                    timerPause();
+                } else if (startPauseButton.getText().equals("Resume")){
+                    startPauseButton.setText("Pause");
+//                    timerResume();
+                }
+
                 if (mediaPlayer==null){
                     mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.kick_balls);
                     mediaPlayer.start();
@@ -116,14 +136,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         public void onFinish() {
                             timer.cancel();
-                            Toast toast = Toast.makeText(getApplicationContext(), "TIME UP!", Toast.LENGTH_SHORT);
-                            toast.show();
+                            Toast.makeText(getApplicationContext(), "TIME UP!", Toast.LENGTH_SHORT).show();
                             mCountDownText.setText("TIME - 60");
+                            DisplayTime.cancel();
                             DisplayTime = null;
-                            if(mediaPlayer!=null){
-                                mediaPlayer.stop();
-                                mediaPlayer=null;
-                            }
                         }
                     };
                     DisplayTime.start();
@@ -173,14 +189,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Stopped!", Toast.LENGTH_SHORT).show();
+                startPauseButton.setText("Start");
+
                 if(mediaPlayer!=null){
                     mediaPlayer.stop();
                     mediaPlayer=null;
                 }
 
+                if(timer!=null){
+                    timer.cancel();
+                    timer = null;
+                }
+
                 if(DisplayTime!=null){
+                    mCountDownText.setText("TIME - 60");
                     DisplayTime.cancel();
-                    DisplayTime.onFinish();
+                    DisplayTime = null;
                 }
             }
         });
@@ -190,18 +215,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         score = 0;
         mTextView.setText("SCORE - " + score);
+        startPauseButton.setText("Start");
+
+        if(DisplayTime!=null){
+            timer.cancel();
+            Toast.makeText(getApplicationContext(), "RESET ALL", Toast.LENGTH_SHORT).show();
+            mCountDownText.setText("TIME - 60");
+            DisplayTime.cancel();
+            DisplayTime = null;
+        }
     }
 
     // Login method to switch view to login page
-    public void loginFromGame(View view){
-        Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context, "LOGIN BUTTON CLICKED", Toast.LENGTH_SHORT);
-        toast.show();
+    public void loginFromGame(View view) {
+        if (fAuth.getCurrentUser() != null){
+            logout(view);
+        }
+        else {
+            mediaPlayer.stop();
+            mediaPlayer = null;
 
-        mediaPlayer.stop();
-        mediaPlayer=null;
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+    }
 
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
+    public void logout(View view){
+        fAuth.getInstance().signOut();
+        Toast.makeText(getApplicationContext(), "Signed Out Successfully", Toast.LENGTH_SHORT).show();
+        // After signing out, redirect user to first page with register, sign in and guest option
+        startActivity(new Intent(getApplicationContext(), FirstActivity.class));
     }
 }
