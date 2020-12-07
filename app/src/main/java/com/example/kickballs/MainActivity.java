@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mTextView, mCountDownText;
     private final int minimum = 1, maximum = 10;
     private int score = 0;
-    private int counter;
+    private long counter, timeLeft;
 
     Timer timer;
     Timer buttonTimer;
     Handler buttonHandler;
     Drawable redBall, whiteBall;
     MediaPlayer mediaPlayer;
-    CountDownTimer DisplayTime;
+    CountDownTimer displayTime;
     FirebaseAuth fAuth;
 
     @Override
@@ -106,15 +106,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 if(startPauseButton.getText().equals("Start")){
-                    Log.i("Started", startPauseButton.getText().toString());
                     startPauseButton.setText("Pause");
-//                    timerStart(15*1000);
+                    displayTimerStart(60*1000);
+
                 } else if (startPauseButton.getText().equals("Pause")){
-                    Log.i("Paused", startPauseButton.getText().toString());
                     startPauseButton.setText("Resume");
+                    displayTime.cancel();
+                    timer.cancel();
 //                    timerPause();
+
                 } else if (startPauseButton.getText().equals("Resume")){
                     startPauseButton.setText("Pause");
+                    Log.i("RESUME timeLeft - ", Long.toString(timeLeft));
+                    displayTimerStart(timeLeft);
 //                    timerResume();
                 }
 
@@ -122,67 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.kick_balls);
                     mediaPlayer.start();
                 }
-
-                if(timer!=null)
-                    timer.cancel();
-                timer = new Timer();
-
-                if (DisplayTime == null) {
-                    DisplayTime = new CountDownTimer(60000, 1000) {
-
-                        public void onTick(long millisUntilFinished) {
-                            mCountDownText.setText("TIME - " + millisUntilFinished / 1000);
-                        }
-
-                        public void onFinish() {
-                            timer.cancel();
-                            Toast.makeText(getApplicationContext(), "TIME UP!", Toast.LENGTH_SHORT).show();
-                            mCountDownText.setText("TIME - 60");
-                            DisplayTime.cancel();
-                            DisplayTime = null;
-                        }
-                    };
-                    DisplayTime.start();
-                }
-
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        final int randomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-
-                        // Change the red cricket ball to white cricket ball after start button is clicked
-                        runOnUiThread(new Runnable(){
-                            @Override
-                            public void run(){
-                                // update ui here else wrong thread exception
-                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
-                            }
-                        });
-
-                        mButtons.get(randomNumber - 1).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mTextView.setText("SCORE - " + String.valueOf(++score));
-                                mButtons.get(randomNumber - 1).setOnClickListener(null);
-                            }
-                        });
-                        buttonTimer.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                mButtons.get(randomNumber - 1).setOnClickListener(null);
-
-                                // Change the white cricket ball to red cricket ball after 750 milliseconds
-                                runOnUiThread(new Runnable(){
-                                    @Override
-                                    public void run(){
-                                        // update ui here else wrong thread exception
-                                        mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.red_ball);
-                                    }
-                                });
-                            }
-                        }, 750);
-                    }
-                }, 2000, 2500);
             }
         });
 
@@ -202,13 +145,78 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     timer = null;
                 }
 
-                if(DisplayTime!=null){
+                if(displayTime!=null){
                     mCountDownText.setText("TIME - 60");
-                    DisplayTime.cancel();
-                    DisplayTime = null;
+                    displayTime.cancel();
+                    displayTime = null;
                 }
             }
         });
+    }
+
+    public void displayTimerStart(long timeLength) {
+        if(timer!=null)
+            timer.cancel();
+        timer = new Timer();
+        displayTime=null;
+
+        displayTime = new CountDownTimer(timeLength, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timeLeft = millisUntilFinished;
+                long min = (millisUntilFinished/(1000*60));
+                long sec = ((millisUntilFinished/1000)-min*60);
+                mCountDownText.setText("TIME - " + Long.toString(min) + ":" + Long.toString(sec));
+            }
+
+            public void onFinish() {
+                timer.cancel();
+                Toast.makeText(getApplicationContext(), "TIME UP!", Toast.LENGTH_SHORT).show();
+                mCountDownText.setText("TIME - 60");
+                displayTime.cancel();
+                displayTime = null;
+                }
+            };
+        displayTime.start();
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                final int randomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+
+                // Change the red cricket ball to white cricket ball after start button is clicked
+                runOnUiThread(new Runnable(){
+                    @Override
+                    public void run(){
+                        // update ui here else wrong thread exception
+                        mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
+                    }
+                });
+
+                mButtons.get(randomNumber - 1).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mTextView.setText("SCORE - " + String.valueOf(++score));
+                        mButtons.get(randomNumber - 1).setOnClickListener(null);
+                    }
+                });
+                buttonTimer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        mButtons.get(randomNumber - 1).setOnClickListener(null);
+
+                        // Change the white cricket ball to red cricket ball after 750 milliseconds
+                        runOnUiThread(new Runnable(){
+                            @Override
+                            public void run(){
+                                // update ui here else wrong thread exception
+                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.red_ball);
+                            }
+                        });
+                    }
+                }, 750);
+            }
+        }, 2000, 2500);
     }
 
     @Override
@@ -218,11 +226,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTextView.setText("SCORE - " + score);
         startPauseButton.setText("Start");
 
-        if(DisplayTime!=null){
+        if(displayTime!=null){
             timer.cancel();
             mCountDownText.setText("TIME - 60");
-            DisplayTime.cancel();
-            DisplayTime = null;
+            displayTime.cancel();
+            displayTime = null;
         }
     }
 
