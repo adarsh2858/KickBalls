@@ -65,6 +65,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/white"
             android:textSize="25sp"
+            android:onClick="launchFourthLevel"
             android:text="4"/>
 
         <Button
@@ -78,6 +79,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/white"
             android:textSize="25sp"
+            android:onClick="launchFifthLevel"
             android:text="5"/>
 
         <Button
@@ -91,6 +93,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/white"
             android:textSize="25sp"
+            android:onClick="launchSixthLevel"
             android:text="6"/>
 
         <Button

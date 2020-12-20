@@ -160,7 +160,7 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
                 timeLeft = millisUntilFinished;
                 long min = (millisUntilFinished/(1000*60));
                 long sec = ((millisUntilFinished/1000)-min*60);
-                mCountDownText.setText("TIME - " + min + ":" + sec);
+                mCountDownText.setText(getResources().getString(R.string.dynamic_time, min, sec));
             }
 
             public void onFinish() {
@@ -191,7 +191,7 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
                 mButtons.get(randomNumber - 1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mTextView.setText("SCORE - " + String.valueOf(++score));
+                        mTextView.setText(getResources().getString(R.string.dynamic_score, ++score));
                         mButtons.get(randomNumber - 1).setOnClickListener(null);
                     }
                 });
@@ -211,14 +211,14 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
                     }
                 }, 750);
             }
-        }, 2000, 2500);
+        }, 500, 1400);
     }
 
     @Override
     public void onClick(View v) {
         Toast.makeText(getApplicationContext(), "RESET ALL", Toast.LENGTH_SHORT).show();
         score = 0;
-        mTextView.setText("SCORE - " + score);
+        mTextView.setText(getResources().getString(R.string.dynamic_score, score));
         startPauseButton.setText(getString(R.string.start));
 
         if(displayTime!=null){
@@ -244,7 +244,7 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
     }
 
     public void logout(View view){
-        fAuth.getInstance().signOut();
+        FirebaseAuth.getInstance().signOut();
         Toast.makeText(getApplicationContext(), "Signed Out Successfully", Toast.LENGTH_SHORT).show();
         // After signing out, redirect user to first page with register, sign in and guest option
         startActivity(new Intent(getApplicationContext(), FirstActivity.class));

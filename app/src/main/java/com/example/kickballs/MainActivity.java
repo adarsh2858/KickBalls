@@ -29,4 +29,19 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Third Level", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(getApplicationContext(), ThirdLevel.class));
     }
+
+    public void launchFourthLevel(View view) {
+        Toast.makeText(getApplicationContext(), "Fourth Level", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), FourthLevel.class));
+    }
+
+    public void launchFifthLevel(View view) {
+        Toast.makeText(getApplicationContext(), "Fifth Level", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), FifthLevel.class));
+    }
+
+    public void launchSixthLevel(View view) {
+        Toast.makeText(getApplicationContext(), "Sixth Level", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), SixthLevel.class));
+    }
 }
