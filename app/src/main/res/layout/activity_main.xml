@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/green_grass"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -11,7 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/btn_1"
@@ -20,8 +23,10 @@
             android:layout_margin="20dp"
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
-            android:textColor="#fff"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:onClick="launchFirstLevel"
+            android:text="1"/>
 
         <Button
             android:id="@+id/btn_2"
@@ -31,8 +36,11 @@
             android:layout_toEndOf="@+id/btn_1"
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
-            android:textColor="#556B2F"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:onClick="launchSecondLevel"
+            android:text="2"
+            />
 
         <Button
             android:id="@+id/btn_3"
@@ -42,8 +50,10 @@
             android:layout_toEndOf="@+id/btn_2"
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
-            android:textColor="#fff"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:onClick="launchThirdLevel"
+            android:text="3"/>
 
         <Button
             android:id="@+id/btn_4"
@@ -53,8 +63,9 @@
             android:layout_margin="20dp"
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
-            android:textColor="#556B2F"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:text="4"/>
 
         <Button
             android:id="@+id/btn_5"
@@ -65,8 +76,9 @@
             android:layout_toEndOf="@+id/btn_4"
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
-            android:textColor="#fff"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:text="5"/>
 
         <Button
             android:id="@+id/btn_6"
@@ -77,8 +89,9 @@
             android:layout_toEndOf="@+id/btn_5"
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
-            android:textColor="#556B2F"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:text="6"/>
 
         <Button
             android:id="@+id/btn_7"
@@ -88,8 +101,9 @@
             android:layout_margin="20dp"
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
-            android:textColor="#fff"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:text="7"/>
 
         <Button
             android:id="@+id/btn_8"
@@ -100,8 +114,9 @@
             android:layout_toEndOf="@+id/btn_7"
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
-            android:textColor="#556B2F"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:text="8"/>
 
         <Button
             android:id="@+id/btn_9"
@@ -113,109 +128,230 @@
             android:background="@drawable/red_ball"
             android:gravity="center_vertical|center_horizontal"
             android:textColor="#fff"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:text="9"/>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttons_list"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp">
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/texts"
-            android:padding="10dp"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerHorizontal="true">
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@drawable/green_grass"-->
+<!--    tools:context=".MainActivity">-->
 
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:text="@string/initialize_score"
-            android:padding="10dp"
-            android:textSize="25sp"
-            android:textColor="@color/lightBlack"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:shadowColor="@color/lightBlack"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2.0"/>
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/buttons_list"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="20dp">-->
 
-        <TextView
-            android:id="@+id/countdown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:text="@string/initialize_time"
-            android:padding="10dp"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:textColor="@color/lightBlack"
-            android:shadowColor="@color/lightBlack"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2.0"/>
+<!--        <Button-->
+<!--            android:id="@+id/btn_1"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textSize="25sp" />-->
 
-        </LinearLayout>
+<!--        <Button-->
+<!--            android:id="@+id/btn_2"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:layout_toEndOf="@+id/btn_1"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#556B2F"-->
+<!--            android:textSize="25sp" />-->
 
-        <LinearLayout
-            android:id="@+id/start_stop"
-            android:layout_below="@+id/texts"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+<!--        <Button-->
+<!--            android:id="@+id/btn_3"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:layout_toEndOf="@+id/btn_2"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textSize="25sp" />-->
 
-        <Button
-            android:id="@+id/btn_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start"
-            android:layout_margin="10dp"
-            style=""
-            />
-<!--            style="?android:attr/borderlessButtonStyle"-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_4"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_below="@+id/btn_1"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#556B2F"-->
+<!--            android:textSize="25sp" />-->
 
-        <Button
-            android:id="@+id/btn_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/stop"
-            android:layout_margin="10dp"
-            style=""/>
+<!--        <Button-->
+<!--            android:id="@+id/btn_5"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_below="@+id/btn_2"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:layout_toEndOf="@+id/btn_4"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textSize="25sp" />-->
 
-        </LinearLayout>
+<!--        <Button-->
+<!--            android:id="@+id/btn_6"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_below="@+id/btn_3"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:layout_toEndOf="@+id/btn_5"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#556B2F"-->
+<!--            android:textSize="25sp" />-->
 
-        <LinearLayout
-            android:layout_below="@+id/start_stop"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+<!--        <Button-->
+<!--            android:id="@+id/btn_7"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_below="@+id/btn_4"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textSize="25sp" />-->
 
-            <Button
-                android:id="@+id/btn_reset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/reset"
-                android:layout_margin="10dp"
-                style=""/>
+<!--        <Button-->
+<!--            android:id="@+id/btn_8"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_below="@+id/btn_5"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:layout_toEndOf="@+id/btn_7"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#556B2F"-->
+<!--            android:textSize="25sp" />-->
 
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/action_sign_in_short"
-                android:layout_margin="10dp"
-                android:onClick="loginFromGame"
-                style=""/>
+<!--        <Button-->
+<!--            android:id="@+id/btn_9"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_below="@+id/btn_6"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:layout_toEndOf="@+id/btn_8"-->
+<!--            android:background="@drawable/red_ball"-->
+<!--            android:gravity="center_vertical|center_horizontal"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textSize="25sp" />-->
+<!--    </RelativeLayout>-->
 
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/buttons_list"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="50dp">-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/texts"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_centerHorizontal="true">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/score"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/button_background"-->
+<!--            android:text="@string/initial_score"-->
+<!--            android:padding="10dp"-->
+<!--            android:textSize="25sp"-->
+<!--            android:textColor="@color/lightBlack"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:shadowColor="@color/lightBlack"-->
+<!--            android:shadowDx="1"-->
+<!--            android:shadowDy="1"-->
+<!--            android:shadowRadius="2.0"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/countdown"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/button_background"-->
+<!--            android:text="@string/initial_time"-->
+<!--            android:padding="10dp"-->
+<!--            android:textSize="25sp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/lightBlack"-->
+<!--            android:shadowColor="@color/lightBlack"-->
+<!--            android:shadowDx="1"-->
+<!--            android:shadowDy="1"-->
+<!--            android:shadowRadius="2.0"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/start_stop"-->
+<!--            android:layout_below="@+id/texts"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_start"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/start"-->
+<!--            android:layout_margin="10dp"-->
+<!--            style=""-->
+<!--            />-->
+<!--&lt;!&ndash;            style="?android:attr/borderlessButtonStyle"&ndash;&gt;-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_stop"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/stop"-->
+<!--            android:layout_margin="10dp"-->
+<!--            style=""/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_below="@+id/start_stop"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_reset"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/reset"-->
+<!--                android:layout_margin="10dp"-->
+<!--                style=""/>-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_login"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/action_sign_in_short"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:onClick="loginFromGame"-->
+<!--                style=""/>-->
+
+<!--        </LinearLayout>-->
+<!--    </RelativeLayout>-->
+<!--</RelativeLayout>-->
