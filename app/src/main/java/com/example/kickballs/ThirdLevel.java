@@ -39,7 +39,7 @@ public class ThirdLevel extends AppCompatActivity implements View.OnClickListene
 
     Drawable pinkBall;
 
-    Drawable footBall, basketBall;
+    Drawable basketBall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,6 @@ public class ThirdLevel extends AppCompatActivity implements View.OnClickListene
         whiteBall = getResources().getDrawable(R.drawable.white_ball);
         pinkBall = getResources().getDrawable(R.drawable.pink_ball);
         basketBall = getResources().getDrawable(R.drawable.basket_ball);
-//        footBall = getResources().getDrawable(R.drawable.foot_ball);
 
         mButtonLogin = findViewById(R.id.btn_login);
         fAuth = FirebaseAuth.getInstance();
@@ -193,7 +192,7 @@ public class ThirdLevel extends AppCompatActivity implements View.OnClickListene
                     public void run(){
                         // update ui here else wrong thread exception
                         mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
-                        mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
+                        mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
                         mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
                     }
                 });
@@ -215,15 +214,15 @@ public class ThirdLevel extends AppCompatActivity implements View.OnClickListene
                             @Override
                             public void run(){
                                 // update ui here else wrong thread exception
-                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.red_ball);
-                                mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
-                                mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
+                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
+                                mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
+                                mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
                             }
                         });
                     }
-                }, 750);
+                }, 650);
             }
-        }, 2000, 2500);
+        }, 500, 1400);
     }
 
     @Override

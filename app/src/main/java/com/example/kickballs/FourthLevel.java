@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SecondLevel extends AppCompatActivity implements View.OnClickListener {
-
+public class FourthLevel extends AppCompatActivity implements View.OnClickListener{
     private List<Button> mButtons = new ArrayList<>(9);
     public Button startPauseButton, stopButton, resetButton, mButtonLogin;
     private TextView mTextView, mCountDownText;
@@ -40,10 +39,12 @@ public class SecondLevel extends AppCompatActivity implements View.OnClickListen
 
     Drawable pinkBall;
 
+    Drawable footBall, basketBall;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second_level);
+        setContentView(R.layout.activity_fourth_level);
 
         Button mButton1, mButton2, mButton3, mButton4, mButton5, mButton6, mButton7, mButton8, mButton9;
 
@@ -73,6 +74,8 @@ public class SecondLevel extends AppCompatActivity implements View.OnClickListen
         redBall= getResources().getDrawable(R.drawable.red_ball);
         whiteBall = getResources().getDrawable(R.drawable.white_ball);
         pinkBall = getResources().getDrawable(R.drawable.pink_ball);
+        basketBall = getResources().getDrawable(R.drawable.basket_ball);
+        footBall = getResources().getDrawable(R.drawable.foot_ball);
 
         mButtonLogin = findViewById(R.id.btn_login);
         fAuth = FirebaseAuth.getInstance();
@@ -181,41 +184,44 @@ public class SecondLevel extends AppCompatActivity implements View.OnClickListen
             @Override
             public void run() {
                 final int randomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int redRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int pinkRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int basketRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
 
                 // Change the red cricket ball to white cricket ball after start button is clicked
                 runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
                         // update ui here else wrong thread exception
-                        mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
                         mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
+                        mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
+                        mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
                     }
                 });
 
-                mButtons.get(randomNumber - 1).setOnClickListener(new View.OnClickListener() {
+                mButtons.get(pinkRandomNumber - 1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mTextView.setText(getResources().getString(R.string.dynamic_score, ++score));
-                        mButtons.get(randomNumber - 1).setOnClickListener(null);
+                        mButtons.get(pinkRandomNumber - 1).setOnClickListener(null);
                     }
                 });
                 buttonTimer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        mButtons.get(randomNumber - 1).setOnClickListener(null);
+                        mButtons.get(pinkRandomNumber - 1).setOnClickListener(null);
 
                         // Change the white cricket ball to red cricket ball after 750 milliseconds
                         runOnUiThread(new Runnable(){
                             @Override
                             public void run(){
                                 // update ui here else wrong thread exception
-                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
-                                mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
+                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
+                                mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
+                                mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
                             }
                         });
                     }
-                }, 750);
+                }, 650);
             }
         }, 500, 1400);
     }

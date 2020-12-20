@@ -211,7 +211,7 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
                     }
                 }, 750);
             }
-        }, 2000, 2500);
+        }, 500, 1400);
     }
 
     @Override

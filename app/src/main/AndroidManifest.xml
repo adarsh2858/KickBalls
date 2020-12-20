@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/click_balls"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThirdLevel"></activity>
+        <activity android:name=".SixthLevel"></activity>
+        <activity android:name=".FifthLevel" />
+        <activity android:name=".FourthLevel" />
+        <activity android:name=".ThirdLevel" />
         <activity android:name=".SecondLevel" />
         <activity android:name=".FirstLevel" />
         <activity android:name=".FirstActivity">
