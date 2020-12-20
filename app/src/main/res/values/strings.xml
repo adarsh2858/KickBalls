@@ -6,7 +6,9 @@
     <string name="register">Register</string>
     <string name="guest">Guest</string>
     <string name="initial_score">SCORE - 0</string>
+    <string name="dynamic_score">SCORE - %1$d</string>
     <string name="initial_time">TIME - 0:60</string>
+    <string name="dynamic_time">TIME - %1$d:%2$d</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="pause">Pause</string>
@@ -23,4 +25,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="cancel">"Cancel"</string>
+
+    <string name="pink_win">CLICK PINK BALL</string>
+    <string name="white_win">CLICK WHITE BALL</string>
 </resources>
