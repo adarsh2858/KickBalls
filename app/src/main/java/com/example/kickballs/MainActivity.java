@@ -44,4 +44,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Sixth Level", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(getApplicationContext(), SixthLevel.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

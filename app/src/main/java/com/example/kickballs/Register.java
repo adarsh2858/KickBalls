@@ -77,7 +77,7 @@ public class Register extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         }else{
-                            Toast.makeText(Register.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this, "Error ! " + task.getException(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), Register.class));
                         }
                     }
@@ -92,5 +92,10 @@ public class Register extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
