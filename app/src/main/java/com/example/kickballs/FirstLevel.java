@@ -249,4 +249,11 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
         // After signing out, redirect user to first page with register, sign in and guest option
         startActivity(new Intent(getApplicationContext(), FirstActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mediaPlayer.stop();
+        mediaPlayer=null;
+    }
 }

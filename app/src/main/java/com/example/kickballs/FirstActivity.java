@@ -40,4 +40,9 @@ public class FirstActivity extends AppCompatActivity {
         Intent intent = new Intent(FirstActivity.this, Register.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

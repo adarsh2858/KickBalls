@@ -261,4 +261,10 @@ public class ThirdLevel extends AppCompatActivity implements View.OnClickListene
         startActivity(new Intent(getApplicationContext(), FirstActivity.class));
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mediaPlayer.stop();
+        mediaPlayer=null;
+    }
 }

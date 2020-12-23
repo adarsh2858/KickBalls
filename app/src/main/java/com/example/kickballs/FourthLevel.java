@@ -262,4 +262,10 @@ public class FourthLevel extends AppCompatActivity implements View.OnClickListen
         startActivity(new Intent(getApplicationContext(), FirstActivity.class));
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mediaPlayer.stop();
+        mediaPlayer=null;
+    }
 }
