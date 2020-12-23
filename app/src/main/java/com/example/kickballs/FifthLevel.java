@@ -23,6 +23,7 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
 
         setContentView(R.layout.activity_fifth_level);
 
+        mButton1 = findViewById(R.id.btn_1);
         mButton2 = findViewById(R.id.btn_2);
         mButton3 = findViewById(R.id.btn_3);
         mButton4 = findViewById(R.id.btn_4);
