@@ -1,12 +1,9 @@
 package com.example.kickballs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,7 +59,7 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         resetButton.setOnClickListener(this);
         buttonTimer = new Timer();
 
-        super.CommonLevelTasks();
+        super.CommonTasks();
 
         startPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override

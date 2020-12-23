@@ -35,7 +35,7 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
     CountDownTimer displayTime;
     FirebaseAuth fAuth;
 
-    protected void CommonLevelTasks() {
+    protected void CommonTasks() {
         if (mediaPlayer == null) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.kick_balls);
             mediaPlayer.start();
@@ -93,8 +93,10 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
             logout(view);
         }
         else {
-            mediaPlayer.stop();
-            mediaPlayer = null;
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                mediaPlayer = null;
+            }
 
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
