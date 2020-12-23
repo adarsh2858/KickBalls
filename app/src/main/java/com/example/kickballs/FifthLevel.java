@@ -19,8 +19,6 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.CommonLevelTasks();
-
         setContentView(R.layout.activity_fifth_level);
 
         mButton1 = findViewById(R.id.btn_1);
@@ -64,6 +62,8 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         resetButton.setOnClickListener(this);
         buttonTimer = new Timer();
 
+        super.CommonLevelTasks();
+
         startPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,30 +84,6 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                 if (mediaPlayer==null){
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.kick_balls);
                     mediaPlayer.start();
-                }
-            }
-        });
-
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Stopped!", Toast.LENGTH_SHORT).show();
-                startPauseButton.setText(getString(R.string.start));
-
-                if(mediaPlayer!=null){
-                    mediaPlayer.stop();
-                    mediaPlayer=null;
-                }
-
-                if(timer!=null){
-                    timer.cancel();
-                    timer = null;
-                }
-
-                if(displayTime!=null){
-                    mCountDownText.setText(R.string.initial_time);
-                    displayTime.cancel();
-                    displayTime = null;
                 }
             }
         });

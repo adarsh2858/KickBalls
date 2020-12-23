@@ -44,6 +44,31 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
         //  To fetch drawables with theme attributes
         redBall= getResources().getDrawable(R.drawable.red_ball);
         whiteBall = getResources().getDrawable(R.drawable.white_ball);
+
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Stopped!", Toast.LENGTH_SHORT).show();
+                startPauseButton.setText(getString(R.string.start));
+
+                if(mediaPlayer!=null){
+                    mediaPlayer.stop();
+                    mediaPlayer=null;
+                }
+
+                if(timer!=null){
+                    timer.cancel();
+                    timer = null;
+                }
+
+                if(displayTime!=null){
+                    mCountDownText.setText(R.string.initial_time);
+                    displayTime.cancel();
+                    displayTime = null;
+                }
+            }
+        });
+
     }
 
     @Override
