@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/click_balls"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".mediumlevels.MediumLevelOne"></activity>
         <activity
             android:name=".LevelsListActivity"
             android:label="@string/title_activity_levels_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SixthLevel" />
         <activity android:name=".FifthLevel" />
         <activity android:name=".FourthLevel" />
