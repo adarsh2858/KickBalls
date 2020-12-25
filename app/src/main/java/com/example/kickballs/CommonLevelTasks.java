@@ -113,7 +113,9 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        mediaPlayer.stop();
-        mediaPlayer=null;
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer = null;
+        }
     }
 }
