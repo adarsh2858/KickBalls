@@ -28,6 +28,16 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         mButton8 = findViewById(R.id.btn_8);
         mButton9 = findViewById(R.id.btn_9);
 
+        mButton1.setBackgroundResource(R.drawable.volley_ball);
+        mButton2.setBackgroundResource(R.drawable.volley_ball);
+        mButton3.setBackgroundResource(R.drawable.volley_ball);
+        mButton4.setBackgroundResource(R.drawable.volley_ball);
+        mButton5.setBackgroundResource(R.drawable.volley_ball);
+        mButton6.setBackgroundResource(R.drawable.volley_ball);
+        mButton7.setBackgroundResource(R.drawable.volley_ball);
+        mButton8.setBackgroundResource(R.drawable.volley_ball);
+        mButton9.setBackgroundResource(R.drawable.volley_ball);
+
         mTextView = findViewById(R.id.score);
         mCountDownText = findViewById(R.id.countdown);
 

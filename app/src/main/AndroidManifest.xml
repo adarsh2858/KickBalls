@@ -11,7 +11,17 @@
         android:roundIcon="@mipmap/click_balls"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SixthLevel"></activity>
+        <activity android:name=".hardlevels.HardLevelThree"></activity>
+        <activity android:name=".hardlevels.HardLevelTwo" />
+        <activity android:name=".hardlevels.HardLevelOne" />
+        <activity android:name=".mediumlevels.MediumLevelThree" />
+        <activity android:name=".mediumlevels.MediumLevelTwo" />
+        <activity android:name=".mediumlevels.MediumLevelOne" />
+        <activity
+            android:name=".LevelsListActivity"
+            android:label="@string/title_activity_levels_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SixthLevel" />
         <activity android:name=".FifthLevel" />
         <activity android:name=".FourthLevel" />
         <activity android:name=".ThirdLevel" />

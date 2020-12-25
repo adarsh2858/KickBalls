@@ -25,7 +25,7 @@ public class FirstActivity extends AppCompatActivity {
         mGuestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FirstActivity.this, MainActivity.class);
+                Intent intent = new Intent(FirstActivity.this, LevelsListActivity.class);
                 startActivity(intent);
             }
         });

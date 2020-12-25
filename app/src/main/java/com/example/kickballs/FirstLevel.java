@@ -235,7 +235,8 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
             logout(view);
         }
         else {
-            mediaPlayer.stop();
+            if(mediaPlayer!=null)
+                mediaPlayer.stop();
             mediaPlayer = null;
 
             Intent intent = new Intent(FirstLevel.this, LoginActivity.class);
@@ -253,7 +254,8 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        mediaPlayer.stop();
+        if(mediaPlayer!=null)
+            mediaPlayer.stop();
         mediaPlayer=null;
     }
 }

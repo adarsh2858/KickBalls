@@ -241,7 +241,8 @@ public class SecondLevel extends AppCompatActivity implements View.OnClickListen
             logout(view);
         }
         else {
-            mediaPlayer.stop();
+            if(mediaPlayer!=null)
+                mediaPlayer.stop();
             mediaPlayer = null;
 
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -259,7 +260,8 @@ public class SecondLevel extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        mediaPlayer.stop();
+        if(mediaPlayer!=null)
+            mediaPlayer.stop();
         mediaPlayer=null;
     }
 }
