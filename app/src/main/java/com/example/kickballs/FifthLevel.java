@@ -127,13 +127,21 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
             @Override
             public void run() {
                 final int randomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int pinkRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int basketRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int footRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int volleyRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
 
                 // Change the red cricket ball to white cricket ball after start button is clicked
                 runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
                         // update ui here else wrong thread exception
-                        mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
+                        mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.red_ball);
+                        mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
+                        mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
+                        mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
+                        mButtons.get(volleyRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                     }
                 });
 
@@ -155,6 +163,10 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                             public void run(){
                                 // update ui here else wrong thread exception
                                 mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                                mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                                mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                                mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                                mButtons.get(volleyRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
                             }
                         });
                     }

@@ -30,7 +30,7 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
 
     Timer timer;
     Timer buttonTimer;
-    Drawable redBall, whiteBall;
+    Drawable redBall, whiteBall, pinkBall, footBall, basketBall, volleyBall;
     MediaPlayer mediaPlayer;
     CountDownTimer displayTime;
     FirebaseAuth fAuth;
@@ -44,6 +44,10 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
         //  To fetch drawables with theme attributes
         redBall= getResources().getDrawable(R.drawable.red_ball);
         whiteBall = getResources().getDrawable(R.drawable.white_ball);
+        pinkBall = getResources().getDrawable(R.drawable.pink_ball);
+        footBall = getResources().getDrawable(R.drawable.foot_ball);
+        basketBall = getResources().getDrawable(R.drawable.basket_ball);
+        volleyBall = getResources().getDrawable(R.drawable.volley_ball);
 
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
