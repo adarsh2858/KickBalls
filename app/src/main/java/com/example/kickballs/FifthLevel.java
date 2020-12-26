@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -126,11 +127,12 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                final int randomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int pinkRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int basketRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int footRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int volleyRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int[] randomNumbers = new Random().ints(minimum, maximum).distinct().limit(5).toArray();
+                final int randomNumber = randomNumbers[0];
+                final int pinkRandomNumber = randomNumbers[1];
+                final int basketRandomNumber = randomNumbers[2];
+                final int footRandomNumber = randomNumbers[3];
+                final int volleyRandomNumber = randomNumbers[4];
 
                 // Change the red cricket ball to white cricket ball after start button is clicked
                 runOnUiThread(new Runnable(){

@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -126,12 +127,13 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                final int randomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int golfRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int pinkRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int basketRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int footRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
-                final int volleyRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int[] randomNumbers = new Random().ints(minimum, maximum).distinct().limit(6).toArray();
+                final int randomNumber = randomNumbers[0];
+                final int golfRandomNumber = randomNumbers[1];
+                final int pinkRandomNumber = randomNumbers[2];
+                final int basketRandomNumber = randomNumbers[3];
+                final int footRandomNumber = randomNumbers[4];
+                final int redRandomNumber = randomNumbers[5];
 
                 // Change the red cricket ball to white cricket ball after start button is clicked
                 runOnUiThread(new Runnable(){
@@ -143,7 +145,7 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                         mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
                         mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
                         mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
-                        mButtons.get(volleyRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                        mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
                     }
                 });
 
@@ -169,7 +171,7 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                                 mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                                 mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                                 mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
-                                mButtons.get(volleyRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                             }
                         });
                     }
