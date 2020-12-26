@@ -1,54 +1,25 @@
-package com.example.kickballs;
+package com.example.kickballs.easylevels;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kickballs.ui.login.LoginActivity;
+import com.example.kickballs.DefaultLevel;
+import com.example.kickballs.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class FirstLevel extends AppCompatActivity implements View.OnClickListener {
-
-    private List<Button> mButtons = new ArrayList<>(9);
-    public Button startPauseButton, stopButton, resetButton, mButtonLogin;
-    private TextView mTextView, mCountDownText;
-    private final int minimum = 1, maximum = 10;
-    private int score = 0;
-    private long timeLeft;
-
-    Timer timer;
-    Timer buttonTimer;
-    Handler buttonHandler;
-    Drawable redBall, whiteBall;
-    MediaPlayer mediaPlayer;
-    CountDownTimer displayTime;
-    FirebaseAuth fAuth;
+public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_level);
-
-        Button mButton1, mButton2, mButton3, mButton4, mButton5, mButton6, mButton7, mButton8, mButton9;
-
-        if (mediaPlayer == null){
-        mediaPlayer = MediaPlayer.create(FirstLevel.this, R.raw.kick_balls);
-        mediaPlayer.start();
-        }
+        setContentView(R.layout.activity_fifth_level);
 
         mButton1 = findViewById(R.id.btn_1);
         mButton2 = findViewById(R.id.btn_2);
@@ -60,16 +31,22 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
         mButton8 = findViewById(R.id.btn_8);
         mButton9 = findViewById(R.id.btn_9);
 
+        mButton1.setBackgroundResource(R.drawable.volley_ball);
+        mButton2.setBackgroundResource(R.drawable.volley_ball);
+        mButton3.setBackgroundResource(R.drawable.volley_ball);
+        mButton4.setBackgroundResource(R.drawable.volley_ball);
+        mButton5.setBackgroundResource(R.drawable.volley_ball);
+        mButton6.setBackgroundResource(R.drawable.volley_ball);
+        mButton7.setBackgroundResource(R.drawable.volley_ball);
+        mButton8.setBackgroundResource(R.drawable.volley_ball);
+        mButton9.setBackgroundResource(R.drawable.volley_ball);
+
         mTextView = findViewById(R.id.score);
         mCountDownText = findViewById(R.id.countdown);
 
         resetButton = findViewById(R.id.btn_reset);
         startPauseButton = findViewById(R.id.btn_start);
         stopButton = findViewById(R.id.btn_stop);
-
-        //  To fetch drawables with theme attributes
-        redBall= getResources().getDrawable(R.drawable.red_ball);
-        whiteBall = getResources().getDrawable(R.drawable.white_ball);
 
         mButtonLogin = findViewById(R.id.btn_login);
         fAuth = FirebaseAuth.getInstance();
@@ -81,6 +58,7 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
 //            int id = getResources().getIdentifier()
 //            mButtons.add(mButton1);
 //        }
+
         mButtons.add(mButton1);
         mButtons.add(mButton2);
         mButtons.add(mButton3);
@@ -93,13 +71,12 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
 
         resetButton.setOnClickListener(this);
         buttonTimer = new Timer();
-        buttonHandler = new Handler();
+
+        super.CommonTasks();
 
         startPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Log.i("START",startPauseButton.getText().toString());
-                System.out.println(getString(R.string.start));
                 if(startPauseButton.getText().equals(getString(R.string.start))){
                     startPauseButton.setText(getString(R.string.pause));
                     displayTimerStart(60*1000);
@@ -108,44 +85,19 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
                     startPauseButton.setText(getString(R.string.resume));
                     displayTime.cancel();
                     timer.cancel();
-//                    timerPause();
 
                 } else if (startPauseButton.getText().equals(getString(R.string.resume))){
                     startPauseButton.setText(getString(R.string.pause));
                     displayTimerStart(timeLeft);
-//                    timerResume();
                 }
 
                 if (mediaPlayer==null){
-                    mediaPlayer = MediaPlayer.create(FirstLevel.this, R.raw.kick_balls);
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.kick_balls);
                     mediaPlayer.start();
                 }
             }
         });
 
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Stopped!", Toast.LENGTH_SHORT).show();
-                startPauseButton.setText(getString(R.string.start));
-
-                if(mediaPlayer!=null){
-                    mediaPlayer.stop();
-                    mediaPlayer=null;
-                }
-
-                if(timer!=null){
-                    timer.cancel();
-                    timer = null;
-                }
-
-                if(displayTime!=null){
-                    mCountDownText.setText(R.string.initial_time);
-                    displayTime.cancel();
-                    displayTime = null;
-                }
-            }
-        });
     }
 
     public void displayTimerStart(long timeLength) {
@@ -170,14 +122,20 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
                 mCountDownText.setText(R.string.initial_time);
                 displayTime.cancel();
                 displayTime = null;
-                }
-            };
+            }
+        };
         displayTime.start();
 
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                final int randomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int[] randomNumbers = new Random().ints(minimum, maximum).distinct().limit(6).toArray();
+                final int randomNumber = randomNumbers[0];
+                final int golfRandomNumber = randomNumbers[1];
+                final int pinkRandomNumber = randomNumbers[2];
+                final int basketRandomNumber = randomNumbers[3];
+                final int footRandomNumber = randomNumbers[4];
+                final int redRandomNumber = randomNumbers[5];
 
                 // Change the red cricket ball to white cricket ball after start button is clicked
                 runOnUiThread(new Runnable(){
@@ -185,6 +143,11 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
                     public void run(){
                         // update ui here else wrong thread exception
                         mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
+                        mButtons.get(golfRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                        mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
+                        mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
+                        mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
+                        mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
                     }
                 });
 
@@ -205,7 +168,12 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
                             @Override
                             public void run(){
                                 // update ui here else wrong thread exception
-                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.red_ball);
+                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(golfRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                             }
                         });
                     }
@@ -214,48 +182,4 @@ public class FirstLevel extends AppCompatActivity implements View.OnClickListene
         }, 500, 1400);
     }
 
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(getApplicationContext(), "RESET ALL", Toast.LENGTH_SHORT).show();
-        score = 0;
-        mTextView.setText(getResources().getString(R.string.dynamic_score, score));
-        startPauseButton.setText(getString(R.string.start));
-
-        if(displayTime!=null){
-            timer.cancel();
-            mCountDownText.setText(R.string.initial_time);
-            displayTime.cancel();
-            displayTime = null;
-        }
-    }
-
-    // Login method to switch view to login page
-    public void loginFromGame(View view) {
-        if (fAuth.getCurrentUser() != null){
-            logout(view);
-        }
-        else {
-            if(mediaPlayer!=null)
-                mediaPlayer.stop();
-            mediaPlayer = null;
-
-            Intent intent = new Intent(FirstLevel.this, LoginActivity.class);
-            startActivity(intent);
-        }
-    }
-
-    public void logout(View view){
-        FirebaseAuth.getInstance().signOut();
-        Toast.makeText(getApplicationContext(), "Signed Out Successfully", Toast.LENGTH_SHORT).show();
-        // After signing out, redirect user to first page with register, sign in and guest option
-        startActivity(new Intent(getApplicationContext(), FirstActivity.class));
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if(mediaPlayer!=null)
-            mediaPlayer.stop();
-        mediaPlayer=null;
-    }
 }

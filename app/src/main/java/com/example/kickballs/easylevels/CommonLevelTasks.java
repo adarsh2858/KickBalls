@@ -1,4 +1,4 @@
-package com.example.kickballs;
+package com.example.kickballs.easylevels;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kickballs.FirstActivity;
+import com.example.kickballs.R;
 import com.example.kickballs.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -30,7 +32,7 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
 
     Timer timer;
     Timer buttonTimer;
-    Drawable redBall, whiteBall;
+    Drawable redBall, whiteBall, pinkBall, footBall, basketBall, volleyBall, golfBall;
     MediaPlayer mediaPlayer;
     CountDownTimer displayTime;
     FirebaseAuth fAuth;
@@ -44,6 +46,11 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
         //  To fetch drawables with theme attributes
         redBall= getResources().getDrawable(R.drawable.red_ball);
         whiteBall = getResources().getDrawable(R.drawable.white_ball);
+        pinkBall = getResources().getDrawable(R.drawable.pink_ball);
+        footBall = getResources().getDrawable(R.drawable.foot_ball);
+        basketBall = getResources().getDrawable(R.drawable.basket_ball);
+        volleyBall = getResources().getDrawable(R.drawable.volley_ball);
+        golfBall = getResources().getDrawable(R.drawable.golf_ball);
 
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.kickballs;
+package com.example.kickballs.easylevels;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -6,17 +6,23 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.kickballs.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.OnClickListener {
+public class FourthLevel extends CommonLevelTasks implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fifth_level);
+        setContentView(R.layout.activity_fourth_level);
+
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.kick_balls);
+            mediaPlayer.start();
+        }
 
         mButton1 = findViewById(R.id.btn_1);
         mButton2 = findViewById(R.id.btn_2);
@@ -28,22 +34,19 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         mButton8 = findViewById(R.id.btn_8);
         mButton9 = findViewById(R.id.btn_9);
 
-        mButton1.setBackgroundResource(R.drawable.volley_ball);
-        mButton2.setBackgroundResource(R.drawable.volley_ball);
-        mButton3.setBackgroundResource(R.drawable.volley_ball);
-        mButton4.setBackgroundResource(R.drawable.volley_ball);
-        mButton5.setBackgroundResource(R.drawable.volley_ball);
-        mButton6.setBackgroundResource(R.drawable.volley_ball);
-        mButton7.setBackgroundResource(R.drawable.volley_ball);
-        mButton8.setBackgroundResource(R.drawable.volley_ball);
-        mButton9.setBackgroundResource(R.drawable.volley_ball);
-
         mTextView = findViewById(R.id.score);
         mCountDownText = findViewById(R.id.countdown);
 
         resetButton = findViewById(R.id.btn_reset);
         startPauseButton = findViewById(R.id.btn_start);
         stopButton = findViewById(R.id.btn_stop);
+
+        //  To fetch drawables with theme attributes
+        redBall= getResources().getDrawable(R.drawable.red_ball);
+        whiteBall = getResources().getDrawable(R.drawable.white_ball);
+        pinkBall = getResources().getDrawable(R.drawable.pink_ball);
+        basketBall = getResources().getDrawable(R.drawable.basket_ball);
+        footBall = getResources().getDrawable(R.drawable.foot_ball);
 
         mButtonLogin = findViewById(R.id.btn_login);
         fAuth = FirebaseAuth.getInstance();
@@ -55,7 +58,6 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
 //            int id = getResources().getIdentifier()
 //            mButtons.add(mButton1);
 //        }
-
         mButtons.add(mButton1);
         mButtons.add(mButton2);
         mButtons.add(mButton3);
@@ -74,18 +76,22 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         startPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(startPauseButton.getText().equals(getString(R.string.start))){
+//                Log.i("START",startPauseButton.getText().toString());
+                System.out.println(getString(R.string.start));
+                if (startPauseButton.getText().equals(getString(R.string.start))) {
                     startPauseButton.setText(getString(R.string.pause));
-                    displayTimerStart(60*1000);
+                    displayTimerStart(60 * 1000);
 
-                } else if (startPauseButton.getText().equals(getString(R.string.pause))){
+                } else if (startPauseButton.getText().equals(getString(R.string.pause))) {
                     startPauseButton.setText(getString(R.string.resume));
                     displayTime.cancel();
                     timer.cancel();
+//                    timerPause();
 
-                } else if (startPauseButton.getText().equals(getString(R.string.resume))){
+                } else if (startPauseButton.getText().equals(getString(R.string.resume))) {
                     startPauseButton.setText(getString(R.string.pause));
                     displayTimerStart(timeLeft);
+//                    timerResume();
                 }
 
                 if (mediaPlayer==null){
@@ -95,6 +101,29 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
             }
         });
 
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Stopped!", Toast.LENGTH_SHORT).show();
+                startPauseButton.setText(getString(R.string.start));
+
+                if(mediaPlayer!=null){
+                    mediaPlayer.stop();
+                    mediaPlayer=null;
+                }
+
+                if(timer!=null){
+                    timer.cancel();
+                    timer = null;
+                }
+
+                if(displayTime!=null){
+                    mCountDownText.setText(R.string.initial_time);
+                    displayTime.cancel();
+                    displayTime = null;
+                }
+            }
+        });
     }
 
     public void displayTimerStart(long timeLength) {
@@ -127,6 +156,9 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
             @Override
             public void run() {
                 final int randomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int pinkRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int basketRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
+                final int redRandomNumber = ((int) (Math.random() * (maximum - minimum))) + minimum;
 
                 // Change the red cricket ball to white cricket ball after start button is clicked
                 runOnUiThread(new Runnable(){
@@ -134,33 +166,38 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                     public void run(){
                         // update ui here else wrong thread exception
                         mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
+                        mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
+                        mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
+                        mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
                     }
                 });
 
-                mButtons.get(randomNumber - 1).setOnClickListener(new View.OnClickListener() {
+                mButtons.get(pinkRandomNumber - 1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mTextView.setText(getResources().getString(R.string.dynamic_score, ++score));
-                        mButtons.get(randomNumber - 1).setOnClickListener(null);
+                        mButtons.get(pinkRandomNumber - 1).setOnClickListener(null);
                     }
                 });
                 buttonTimer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        mButtons.get(randomNumber - 1).setOnClickListener(null);
+                        mButtons.get(pinkRandomNumber - 1).setOnClickListener(null);
 
                         // Change the white cricket ball to red cricket ball after 750 milliseconds
                         runOnUiThread(new Runnable(){
                             @Override
                             public void run(){
                                 // update ui here else wrong thread exception
-                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.red_ball);
+                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
+                                mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
+                                mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
+                                mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
                             }
                         });
                     }
-                }, 750);
+                }, 650);
             }
         }, 500, 1400);
     }
-
 }

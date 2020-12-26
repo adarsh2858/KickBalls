@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FifthLevel">
+    tools:context=".easylevels.FifthLevel">
 
-    <include layout="@layout/activity_easy_level"/>
+    <include layout="@layout/activity_easy_level" />
 
 </RelativeLayout>
