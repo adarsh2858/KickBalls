@@ -154,7 +154,7 @@ public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                             @Override
                             public void run(){
                                 // update ui here else wrong thread exception
-                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.red_ball);
+                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
                             }
                         });
                     }
