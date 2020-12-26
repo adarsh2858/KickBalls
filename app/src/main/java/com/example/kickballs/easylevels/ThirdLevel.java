@@ -1,56 +1,25 @@
 package com.example.kickballs.easylevels;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.kickballs.FirstActivity;
 import com.example.kickballs.R;
-import com.example.kickballs.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ThirdLevel extends AppCompatActivity implements View.OnClickListener{
-    private List<Button> mButtons = new ArrayList<>(9);
-    public Button startPauseButton, stopButton, resetButton, mButtonLogin;
-    private TextView mTextView, mCountDownText;
-    private final int minimum = 1, maximum = 10;
-    private int score = 0;
-    private long timeLeft;
-
-    Timer timer;
-    Timer buttonTimer;
-    Handler buttonHandler;
-    Drawable redBall, whiteBall;
-    MediaPlayer mediaPlayer;
-    CountDownTimer displayTime;
-    FirebaseAuth fAuth;
-
-    Drawable pinkBall;
-
-    Drawable basketBall;
+public class ThirdLevel extends CommonLevelTasks implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_level);
 
-        Button mButton1, mButton2, mButton3, mButton4, mButton5, mButton6, mButton7, mButton8, mButton9;
-
-        if (mediaPlayer == null){
+        if (mediaPlayer == null) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.kick_balls);
             mediaPlayer.start();
         }
@@ -100,30 +69,31 @@ public class ThirdLevel extends AppCompatActivity implements View.OnClickListene
 
         resetButton.setOnClickListener(this);
         buttonTimer = new Timer();
-        buttonHandler = new Handler();
+
+        super.CommonTasks();
 
         startPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Log.i("START",startPauseButton.getText().toString());
                 System.out.println(getString(R.string.start));
-                if(startPauseButton.getText().equals(getString(R.string.start))){
+                if (startPauseButton.getText().equals(getString(R.string.start))) {
                     startPauseButton.setText(getString(R.string.pause));
-                    displayTimerStart(60*1000);
+                    displayTimerStart(60 * 1000);
 
-                } else if (startPauseButton.getText().equals(getString(R.string.pause))){
+                } else if (startPauseButton.getText().equals(getString(R.string.pause))) {
                     startPauseButton.setText(getString(R.string.resume));
                     displayTime.cancel();
                     timer.cancel();
 //                    timerPause();
 
-                } else if (startPauseButton.getText().equals(getString(R.string.resume))){
+                } else if (startPauseButton.getText().equals(getString(R.string.resume))) {
                     startPauseButton.setText(getString(R.string.pause));
                     displayTimerStart(timeLeft);
 //                    timerResume();
                 }
 
-                if (mediaPlayer==null){
+                if (mediaPlayer == null) {
                     mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.kick_balls);
                     mediaPlayer.start();
                 }
@@ -136,17 +106,17 @@ public class ThirdLevel extends AppCompatActivity implements View.OnClickListene
                 Toast.makeText(getApplicationContext(), "Stopped!", Toast.LENGTH_SHORT).show();
                 startPauseButton.setText(getString(R.string.start));
 
-                if(mediaPlayer!=null){
+                if (mediaPlayer != null) {
                     mediaPlayer.stop();
-                    mediaPlayer=null;
+                    mediaPlayer = null;
                 }
 
-                if(timer!=null){
+                if (timer != null) {
                     timer.cancel();
                     timer = null;
                 }
 
-                if(displayTime!=null){
+                if (displayTime != null) {
                     mCountDownText.setText(R.string.initial_time);
                     displayTime.cancel();
                     displayTime = null;
@@ -225,50 +195,5 @@ public class ThirdLevel extends AppCompatActivity implements View.OnClickListene
                 }, 650);
             }
         }, 500, 1400);
-    }
-
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(getApplicationContext(), "RESET ALL", Toast.LENGTH_SHORT).show();
-        score = 0;
-        mTextView.setText(getResources().getString(R.string.dynamic_score, score));
-        startPauseButton.setText(getString(R.string.start));
-
-        if(displayTime!=null){
-            timer.cancel();
-            mCountDownText.setText(R.string.initial_time);
-            displayTime.cancel();
-            displayTime = null;
-        }
-    }
-
-    // Login method to switch view to login page
-    public void loginFromGame(View view) {
-        if (fAuth.getCurrentUser() != null){
-            logout(view);
-        }
-        else {
-            if(mediaPlayer!=null)
-                mediaPlayer.stop();
-            mediaPlayer = null;
-
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intent);
-        }
-    }
-
-    public void logout(View view){
-        FirebaseAuth.getInstance().signOut();
-        Toast.makeText(getApplicationContext(), "Signed Out Successfully", Toast.LENGTH_SHORT).show();
-        // After signing out, redirect user to first page with register, sign in and guest option
-        startActivity(new Intent(getApplicationContext(), FirstActivity.class));
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if(mediaPlayer!=null)
-            mediaPlayer.stop();
-        mediaPlayer=null;
     }
 }
