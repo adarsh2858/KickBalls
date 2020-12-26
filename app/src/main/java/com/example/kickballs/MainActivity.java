@@ -1,11 +1,18 @@
 package com.example.kickballs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.kickballs.easylevels.FifthLevel;
+import com.example.kickballs.easylevels.FirstLevel;
+import com.example.kickballs.easylevels.FourthLevel;
+import com.example.kickballs.easylevels.SecondLevel;
+import com.example.kickballs.easylevels.SixthLevel;
+import com.example.kickballs.easylevels.ThirdLevel;
 
 public class MainActivity extends AppCompatActivity {
 

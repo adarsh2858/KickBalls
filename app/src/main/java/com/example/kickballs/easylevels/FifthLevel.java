@@ -1,4 +1,4 @@
-package com.example.kickballs;
+package com.example.kickballs.easylevels;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -6,13 +6,15 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.kickballs.DefaultLevel;
+import com.example.kickballs.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.OnClickListener {
+public class FifthLevel extends CommonLevelTasks implements DefaultLevel, View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +31,15 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         mButton8 = findViewById(R.id.btn_8);
         mButton9 = findViewById(R.id.btn_9);
 
-        mButton1.setBackgroundResource(R.drawable.volley_ball);
-        mButton2.setBackgroundResource(R.drawable.volley_ball);
-        mButton3.setBackgroundResource(R.drawable.volley_ball);
-        mButton4.setBackgroundResource(R.drawable.volley_ball);
-        mButton5.setBackgroundResource(R.drawable.volley_ball);
-        mButton6.setBackgroundResource(R.drawable.volley_ball);
-        mButton7.setBackgroundResource(R.drawable.volley_ball);
-        mButton8.setBackgroundResource(R.drawable.volley_ball);
-        mButton9.setBackgroundResource(R.drawable.volley_ball);
+        mButton1.setBackgroundResource(R.drawable.golf_ball);
+        mButton2.setBackgroundResource(R.drawable.golf_ball);
+        mButton3.setBackgroundResource(R.drawable.golf_ball);
+        mButton4.setBackgroundResource(R.drawable.golf_ball);
+        mButton5.setBackgroundResource(R.drawable.golf_ball);
+        mButton6.setBackgroundResource(R.drawable.golf_ball);
+        mButton7.setBackgroundResource(R.drawable.golf_ball);
+        mButton8.setBackgroundResource(R.drawable.golf_ball);
+        mButton9.setBackgroundResource(R.drawable.golf_ball);
 
         mTextView = findViewById(R.id.score);
         mCountDownText = findViewById(R.id.countdown);
@@ -127,25 +129,23 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                final int[] randomNumbers = new Random().ints(minimum, maximum).distinct().limit(6).toArray();
+                final int[] randomNumbers = new Random().ints(minimum, maximum).distinct().limit(5).toArray();
                 final int randomNumber = randomNumbers[0];
-                final int golfRandomNumber = randomNumbers[1];
-                final int pinkRandomNumber = randomNumbers[2];
-                final int basketRandomNumber = randomNumbers[3];
-                final int footRandomNumber = randomNumbers[4];
-                final int redRandomNumber = randomNumbers[5];
+                final int pinkRandomNumber = randomNumbers[1];
+                final int basketRandomNumber = randomNumbers[2];
+                final int footRandomNumber = randomNumbers[3];
+                final int volleyRandomNumber = randomNumbers[4];
 
                 // Change the red cricket ball to white cricket ball after start button is clicked
                 runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
                         // update ui here else wrong thread exception
-                        mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
-                        mButtons.get(golfRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                        mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.red_ball);
                         mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
                         mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
                         mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.foot_ball);
-                        mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.red_ball);
+                        mButtons.get(volleyRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                     }
                 });
 
@@ -166,12 +166,11 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                             @Override
                             public void run(){
                                 // update ui here else wrong thread exception
-                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
-                                mButtons.get(golfRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
-                                mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
-                                mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
-                                mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
-                                mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                                mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                                mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                                mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
+                                mButtons.get(volleyRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
                             }
                         });
                     }

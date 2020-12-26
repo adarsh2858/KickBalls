@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/green_grass"
-    tools:context=".FourthLevel">
+    tools:context=".easylevels.FourthLevel">
 
     <RelativeLayout
         android:id="@+id/buttons_list"
