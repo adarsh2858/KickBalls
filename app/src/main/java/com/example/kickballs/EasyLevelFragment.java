@@ -12,6 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.kickballs.easylevels.FifthLevel;
+import com.example.kickballs.easylevels.FirstLevel;
+import com.example.kickballs.easylevels.FourthLevel;
+import com.example.kickballs.easylevels.SecondLevel;
+import com.example.kickballs.easylevels.SixthLevel;
+import com.example.kickballs.easylevels.ThirdLevel;
+
 public class EasyLevelFragment extends Fragment {
 
     Button firstLevel, secondLevel, thirdLevel, fourthLevel, fifthLevel, sixthLevel;
@@ -19,7 +26,7 @@ public class EasyLevelFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView =  inflater.inflate(R.layout.activity_main, container, false);
+        View rootView = inflater.inflate(R.layout.activity_main, container, false);
 
         firstLevel = rootView.findViewById(R.id.btn_1);
         secondLevel = rootView.findViewById(R.id.btn_2);

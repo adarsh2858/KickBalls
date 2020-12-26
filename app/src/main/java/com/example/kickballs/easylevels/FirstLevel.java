@@ -1,6 +1,4 @@
-package com.example.kickballs;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.kickballs.easylevels;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -13,6 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.kickballs.FirstActivity;
+import com.example.kickballs.R;
 import com.example.kickballs.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
