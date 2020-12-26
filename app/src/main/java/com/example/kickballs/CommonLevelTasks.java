@@ -30,7 +30,7 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
 
     Timer timer;
     Timer buttonTimer;
-    Drawable redBall, whiteBall, pinkBall, footBall, basketBall, volleyBall;
+    Drawable redBall, whiteBall, pinkBall, footBall, basketBall, volleyBall, golfBall;
     MediaPlayer mediaPlayer;
     CountDownTimer displayTime;
     FirebaseAuth fAuth;
@@ -48,6 +48,7 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
         footBall = getResources().getDrawable(R.drawable.foot_ball);
         basketBall = getResources().getDrawable(R.drawable.basket_ball);
         volleyBall = getResources().getDrawable(R.drawable.volley_ball);
+        golfBall = getResources().getDrawable(R.drawable.golf_ball);
 
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
