@@ -1,171 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FirstActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="EASY LEVEL"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttons_list"
+    <FrameLayout
+        android:id="@+id/flFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <RelativeLayout
-        android:id="@+id/buttons_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <pl.droidsonroids.gif.GifImageButton
-            android:src="@drawable/level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btn_1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:onClick="launchFirstLevel"
-            android:text="1"/>
-
-        <Button
-            android:id="@+id/btn_2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="20dp"
-            android:layout_toEndOf="@+id/btn_1"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:onClick="launchSecondLevel"
-            android:text="2"
-            />
-
-        <Button
-            android:id="@+id/btn_3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="20dp"
-            android:layout_toEndOf="@+id/btn_2"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:onClick="launchThirdLevel"
-            android:text="3"/>
-
-        <Button
-            android:id="@+id/btn_4"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/btn_1"
-            android:layout_margin="20dp"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:onClick="launchFourthLevel"
-            android:text="4"/>
-
-        <Button
-            android:id="@+id/btn_5"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/btn_2"
-            android:layout_margin="20dp"
-            android:layout_toEndOf="@+id/btn_4"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:onClick="launchFifthLevel"
-            android:text="5"/>
-
-        <Button
-            android:id="@+id/btn_6"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/btn_3"
-            android:layout_margin="20dp"
-            android:layout_toEndOf="@+id/btn_5"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:onClick="launchSixthLevel"
-            android:text="6"/>
-
-        <Button
-            android:id="@+id/btn_7"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/btn_4"
-            android:layout_margin="20dp"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:text="7"/>
-
-        <Button
-            android:id="@+id/btn_8"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/btn_5"
-            android:layout_margin="20dp"
-            android:layout_toEndOf="@+id/btn_7"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:text="8"/>
-
-        <Button
-            android:id="@+id/btn_9"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/btn_6"
-            android:layout_margin="20dp"
-            android:layout_toEndOf="@+id/btn_8"
-            android:background="@drawable/red_ball"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="#fff"
-            android:textSize="25sp"
-            android:text="9"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/gifs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttons_list">
-
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/flame" />
-    </RelativeLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
