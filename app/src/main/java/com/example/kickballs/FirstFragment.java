@@ -1,11 +1,17 @@
 package com.example.kickballs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.kickballs.ui.login.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +51,8 @@ public class FirstFragment extends Fragment {
         return fragment;
     }
 
+    Button mRegisterButton, mLoginButton, mGuestButton;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,5 +67,37 @@ public class FirstFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        mRegisterButton = getView().findViewById(R.id.btn_register);
+        mLoginButton = getView().findViewById(R.id.btn_login);
+        mGuestButton = getView().findViewById(R.id.btn_guest);
+
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Register.class));
+            }
+        });
+
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
+
+        mGuestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LevelsListActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
