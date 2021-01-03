@@ -1,8 +1,5 @@
 package com.example.kickballs;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,8 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,7 +41,7 @@ public class Register extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
 
         if(fAuth.getCurrentUser() != null)
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), LevelsListActivity.class));
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +73,7 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), LevelsListActivity.class));
 
                         }else{
                             Toast.makeText(Register.this, "Error ! " + task.getException(), Toast.LENGTH_SHORT).show();
@@ -88,7 +87,7 @@ public class Register extends AppCompatActivity {
         mGuestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Register.this, MainActivity.class);
+                Intent intent = new Intent(Register.this, LevelsListActivity.class);
                 startActivity(intent);
             }
         });
