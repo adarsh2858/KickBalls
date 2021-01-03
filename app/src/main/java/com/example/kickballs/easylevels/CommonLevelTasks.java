@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kickballs.FirstActivity;
+import com.example.kickballs.MainActivity;
 import com.example.kickballs.R;
 import com.example.kickballs.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -114,7 +114,7 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(getApplicationContext(), "Signed Out Successfully", Toast.LENGTH_SHORT).show();
         // After signing out, redirect user to first page with register, sign in and guest option
-        startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
     @Override

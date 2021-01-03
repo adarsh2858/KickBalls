@@ -26,7 +26,7 @@ public class EasyLevelFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_easy_level, container, false);
 
         firstLevel = rootView.findViewById(R.id.btn_1);
         secondLevel = rootView.findViewById(R.id.btn_2);

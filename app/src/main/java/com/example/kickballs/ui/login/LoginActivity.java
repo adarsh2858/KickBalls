@@ -22,8 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.kickballs.FirstActivity;
 import com.example.kickballs.LevelsListActivity;
+import com.example.kickballs.MainActivity;
 import com.example.kickballs.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -161,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void cancel(View view){
-        startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
@@ -177,7 +177,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
 }
