@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_foreground"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/daily_challenges"
+        android:icon="@drawable/calendar_foreground"
+        android:title="Daily Challenges" />
+
+    <item
+        android:id="@+id/stats"
+        android:icon="@drawable/statistics_foreground"
+        android:title="Statistics" />
+
+</menu>
