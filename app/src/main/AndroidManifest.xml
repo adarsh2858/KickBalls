@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kickballs">
+    package="com.adarsh.kickballs">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,33 +12,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.adarsh.kickballs.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".FirstActivity">
+            android:parentActivityName="com.adarsh.kickballs.FirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FirstActivity" />
+                android:value="com.adarsh.kickballs.FirstActivity" />
         </activity>
-        <activity android:name=".easylevels.NinthLevel" />
-        <activity android:name=".easylevels.EighthLevel" />
-        <activity android:name=".easylevels.SeventhLevel" />
-        <activity android:name=".hardlevels.HardLevelThree" />
-        <activity android:name=".hardlevels.HardLevelTwo" />
-        <activity android:name=".hardlevels.HardLevelOne" />
-        <activity android:name=".mediumlevels.MediumLevelThree" />
-        <activity android:name=".mediumlevels.MediumLevelTwo" />
-        <activity android:name=".mediumlevels.MediumLevelOne" />
+        <activity android:name="com.adarsh.kickballs.easylevels.NinthLevel" />
+        <activity android:name="com.adarsh.kickballs.easylevels.EighthLevel" />
+        <activity android:name="com.adarsh.kickballs.easylevels.SeventhLevel" />
+        <activity android:name="com.adarsh.kickballs.hardlevels.HardLevelThree" />
+        <activity android:name="com.adarsh.kickballs.hardlevels.HardLevelTwo" />
+        <activity android:name="com.adarsh.kickballs.hardlevels.HardLevelOne" />
+        <activity android:name="com.adarsh.kickballs.mediumlevels.MediumLevelThree" />
+        <activity android:name="com.adarsh.kickballs.mediumlevels.MediumLevelTwo" />
+        <activity android:name="com.adarsh.kickballs.mediumlevels.MediumLevelOne" />
         <activity
-            android:name=".LevelsListActivity"
+            android:name="com.adarsh.kickballs.LevelsListActivity"
             android:label="@string/title_activity_levels_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".easylevels.SixthLevel" />
-        <activity android:name=".easylevels.FifthLevel" />
-        <activity android:name=".easylevels.FourthLevel" />
-        <activity android:name=".easylevels.ThirdLevel" />
-        <activity android:name=".easylevels.SecondLevel" />
-        <activity android:name=".easylevels.FirstLevel" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.adarsh.kickballs.easylevels.SixthLevel" />
+        <activity android:name="com.adarsh.kickballs.easylevels.FifthLevel" />
+        <activity android:name="com.adarsh.kickballs.easylevels.FourthLevel" />
+        <activity android:name="com.adarsh.kickballs.easylevels.ThirdLevel" />
+        <activity android:name="com.adarsh.kickballs.easylevels.SecondLevel" />
+        <activity android:name="com.adarsh.kickballs.easylevels.FirstLevel" />
+        <activity android:name="com.adarsh.kickballs.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,10 +46,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.adarsh.kickballs.ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".FirstActivity" />
-        <activity android:name=".Register" />
+        <activity android:name="com.adarsh.kickballs.FirstActivity" />
+        <activity android:name="com.adarsh.kickballs.Register" />
     </application>
 
 </manifest>

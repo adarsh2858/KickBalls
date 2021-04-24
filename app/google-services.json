@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "436062496196",
-    "project_id": "kickballs-7b254",
-    "storage_bucket": "kickballs-7b254.appspot.com"
+    "project_number": "179124825734",
+    "project_id": "clickballs-3b95e",
+    "storage_bucket": "clickballs-3b95e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:436062496196:android:44481447fc280fb7aab091",
+        "mobilesdk_app_id": "1:179124825734:android:f6921ead2e4aadd106eb07",
         "android_client_info": {
-          "package_name": "com.example.kickballs"
+          "package_name": "com.adarsh.kickballs"
         }
       },
       "oauth_client": [
         {
-          "client_id": "436062496196-smdcgdu6s3eujade8e2aef0b6ju4smmf.apps.googleusercontent.com",
+          "client_id": "179124825734-vnsm10k31m4et8de1l6v5qgi7g1um2ro.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.kickballs",
+            "package_name": "com.adarsh.kickballs",
             "certificate_hash": "80473fc5345134d1a7558e912b002ba254482968"
           }
         },
         {
-          "client_id": "436062496196-8srt0o8n5n7e85i8ftav2urt0mlb7jr2.apps.googleusercontent.com",
+          "client_id": "179124825734-quomc1u2svv1pcm9ou5i5eepqcesu2kc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCDVVd_J4BCo3xSS-57wLMJCtkKgBdl4C4"
+          "current_key": "AIzaSyBXvMS5i_RAFcJVQaZgFjC-UCe-uxn-Wfc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "436062496196-8srt0o8n5n7e85i8ftav2urt0mlb7jr2.apps.googleusercontent.com",
+              "client_id": "179124825734-quomc1u2svv1pcm9ou5i5eepqcesu2kc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
