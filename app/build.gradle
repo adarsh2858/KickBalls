@@ -12,6 +12,20 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layouts/common-levels',
+                            'src/main/res/layouts/easy-levels',
+                            'src/main/res/layouts/medium-levels',
+                            'src/main/res/layouts/hard-levels',
+                            'src/main/res/layouts/shared',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
