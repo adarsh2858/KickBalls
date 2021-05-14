@@ -49,7 +49,14 @@
             android:name="com.adarsh.kickballs.ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name="com.adarsh.kickballs.FirstActivity" />
-        <activity android:name="com.adarsh.kickballs.Register" />
+        <activity
+            android:name="com.adarsh.kickballs.Register"
+            android:label="@string/title_activity_register"
+            android:parentActivityName="com.adarsh.kickballs.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.adarsh.kickballs.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

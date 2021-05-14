@@ -33,6 +33,7 @@
     <string name="tab_text_2">MEDIUM</string>
     <string name="tab_text_3">HARD</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">User Info</string>

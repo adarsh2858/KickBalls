@@ -10,7 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +25,7 @@ public class Register extends AppCompatActivity {
     Button mRegisterButton;
     FirebaseAuth fAuth;
     Button mGuestButton;
+    Toolbar myToolbar;
 
     ProgressBar progressBar;
 
@@ -36,6 +39,13 @@ public class Register extends AppCompatActivity {
         mPassword = findViewById(R.id.password);
         mRegisterButton = findViewById(R.id.btn_register);
         mGuestButton = findViewById(R.id.btn_guest);
+        myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progress_bar);
