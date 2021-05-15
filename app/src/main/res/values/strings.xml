@@ -23,9 +23,10 @@
     <string name="welcome">"Welcome ! "</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="cancel">"Cancel"</string>
+    <string name="login_failed">Login failed</string>
+    <string name="cancel">Cancel</string>
 
+    <string name="achievements">Achievements</string>
     <string name="pink_win">CLICK PINK BALL</string>
     <string name="white_win">CLICK WHITE BALL</string>
     <string name="title_activity_levels_list">LevelsListActivity</string>
