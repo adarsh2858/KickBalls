@@ -1,6 +1,7 @@
 package com.adarsh.kickballs;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import java.net.URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,15 +74,30 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mTextView = getView().findViewById(R.id.firstFragmentHeader);
+        mTextView = getView().findViewById(R.id.data);
         mCalendarView = getView().findViewById(R.id.calendar);
 
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date = dayOfMonth + "-" + (month + 1) + "-" + year;
-                mTextView.setText(date);
+
+                // Following statements mitigate the android.os.NetworkOnMainThreadException problem.
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+
+                fetchData(date);
             }
         });
+    }
+
+    private String fetchData(String date) {
+        try {
+            new RetrieveFeedTask().doInBackground(new URL("https://h5p9ullr2j.execute-api.ap-south-1.amazonaws.com/dev/service"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        mTextView.setText(date);
+        return "";
     }
 }
