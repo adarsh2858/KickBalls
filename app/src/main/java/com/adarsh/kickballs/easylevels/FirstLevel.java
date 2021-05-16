@@ -7,12 +7,16 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.adarsh.kickballs.R;
+import com.adarsh.kickballs.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class FirstLevel extends CommonLevelTasks implements View.OnClickListener {
+
+    protected SettingsActivity.SettingsFragment obj = new SettingsActivity.SettingsFragment();
+    protected int initialTime = obj.getTime();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class FirstLevel extends CommonLevelTasks implements View.OnClickListener
 
         mTextView = findViewById(R.id.score);
         mCountDownText = findViewById(R.id.countdown);
+        mCountDownText.setText(getResources().getString(R.string.initial_dynamic_time, initialTime));
 
         resetButton = findViewById(R.id.btn_reset);
         startPauseButton = findViewById(R.id.btn_start);
@@ -75,7 +80,7 @@ public class FirstLevel extends CommonLevelTasks implements View.OnClickListener
             public void onClick(View v) {
                 if (startPauseButton.getText().equals(getString(R.string.start))) {
                     startPauseButton.setText(getString(R.string.pause));
-                    displayTimerStart(60 * 1000);
+                    displayTimerStart(initialTime * 1000);
 
                 } else if (startPauseButton.getText().equals(getString(R.string.pause))) {
                     startPauseButton.setText(getString(R.string.resume));
@@ -111,7 +116,8 @@ public class FirstLevel extends CommonLevelTasks implements View.OnClickListener
                 }
 
                 if (displayTime != null) {
-                    mCountDownText.setText(R.string.initial_time);
+//                    mCountDownText.setText(R.string.initial_time);
+                    mCountDownText.setText(getResources().getString(R.string.initial_dynamic_time, initialTime));
                     displayTime.cancel();
                     displayTime = null;
                 }
@@ -129,8 +135,8 @@ public class FirstLevel extends CommonLevelTasks implements View.OnClickListener
 
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
-                long min = (millisUntilFinished/(1000*60));
-                long sec = ((millisUntilFinished/1000)-min*60);
+                long min = (millisUntilFinished/(1000*initialTime));
+                long sec = ((millisUntilFinished/1000)-min*initialTime);
                 mCountDownText.setText(getResources().getString(R.string.dynamic_time, min, sec));
             }
 
@@ -138,7 +144,8 @@ public class FirstLevel extends CommonLevelTasks implements View.OnClickListener
                 timer.cancel();
                 startPauseButton.setText(getString(R.string.start));
                 Toast.makeText(getApplicationContext(), "TIME UP!", Toast.LENGTH_SHORT).show();
-                mCountDownText.setText(R.string.initial_time);
+//                mCountDownText.setText(R.string.initial_time);
+                mCountDownText.setText(getResources().getString(R.string.initial_dynamic_time, initialTime));
                 displayTime.cancel();
                 displayTime = null;
                 }

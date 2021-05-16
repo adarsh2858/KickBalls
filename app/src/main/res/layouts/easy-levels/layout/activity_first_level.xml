@@ -167,9 +167,9 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2.0"
-                android:text="@string/initial_time"
                 android:textColor="@color/lightBlack"
                 android:textSize="25sp" />
+<!--                android:text="@string/initial_time"-->
 
         </LinearLayout>
 

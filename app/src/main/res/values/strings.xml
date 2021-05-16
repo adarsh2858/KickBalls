@@ -8,6 +8,7 @@
     <string name="initial_score">SCORE - 0</string>
     <string name="dynamic_score">SCORE - %1$d</string>
     <string name="initial_time">TIME - 0:60</string>
+    <string name="initial_dynamic_time">TIME - 0:%1$d</string>
     <string name="dynamic_time">TIME - %1$d:%2$d</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
