@@ -30,6 +30,7 @@
     <string name="no_data">No data</string>
     <string name="pink_win">CLICK PINK BALL</string>
     <string name="white_win">CLICK WHITE BALL</string>
+    <string name="red_win">CLICK RED BALL</string>
     <string name="title_activity_levels_list">LevelsListActivity</string>
     <string name="tab_text_1">EASY</string>
     <string name="tab_text_2">MEDIUM</string>
