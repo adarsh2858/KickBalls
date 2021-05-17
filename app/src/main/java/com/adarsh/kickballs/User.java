@@ -2,13 +2,13 @@ package com.adarsh.kickballs;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class User implements Serializable {
 
     private String id;
 
     private String name;
 
-    private double price;
+    private int score;
 
     private String description;
 
@@ -30,12 +30,12 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public double getPrice() {
-        return this.price;
+    public int getScore() {
+        return this.score;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getDescription() {
@@ -54,13 +54,13 @@ public class Product implements Serializable {
         this.photo = photo;
     }
 
-    public Product() {
+    public User() {
     }
 
-    public Product(String id, String name, double price, String description, int photo) {
+    public User(String id, String name, int score, String description, int photo) {
         this.id = id;
         this.name = name;
-        this.price = price;
+        this.score = score;
         this.description = description;
         this.photo = photo;
     }

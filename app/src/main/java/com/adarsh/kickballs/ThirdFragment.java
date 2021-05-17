@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -85,19 +84,19 @@ public class ThirdFragment extends Fragment {
     }
 
     private void loadData() {
-        List<Product> products = new ArrayList<Product>();
-        products.add(new Product("p01", "Name 1", 4, "Description for Product 1", R.drawable.green_circle));
-        products.add(new Product("p02", "Name 2", 8, "Description for Product 2", R.drawable.green_circle));
-        products.add(new Product("p03", "Name 3", 9, "Description for Product 3", R.drawable.green_circle));
-        products.add(new Product("p04", "Name 4", 11, "Description for Product 4", R.drawable.green_circle));
-        products.add(new Product("p05", "Name 5", 5, "Description for Product 5", R.drawable.green_circle));
-        products.add(new Product("p06", "Name 6", 21, "Description for Product 6", R.drawable.green_circle));
-        products.add(new Product("p07", "Name 7", 15, "Description for Product 7", R.drawable.green_circle));
-        products.add(new Product("p08", "Name 8", 8, "Description for Product 8", R.drawable.green_circle));
-        products.add(new Product("p09", "Name 9", 32, "Description for Product 9", R.drawable.green_circle));
+        List<User> users = new ArrayList<User>();
+        users.add(new User("p01", "Adarsh", 20, "Description for Score 1", R.drawable.green_circle));
+//        products.add(new Product("p02", "Name 2", 8, "Description for Product 2", R.drawable.green_circle));
+//        products.add(new Product("p03", "Name 3", 9, "Description for Product 3", R.drawable.green_circle));
+//        products.add(new Product("p04", "Name 4", 11, "Description for Product 4", R.drawable.green_circle));
+//        products.add(new Product("p05", "Name 5", 5, "Description for Product 5", R.drawable.green_circle));
+//        products.add(new Product("p06", "Name 6", 21, "Description for Product 6", R.drawable.green_circle));
+//        products.add(new Product("p07", "Name 7", 15, "Description for Product 7", R.drawable.green_circle));
+//        products.add(new Product("p08", "Name 8", 8, "Description for Product 8", R.drawable.green_circle));
+//        products.add(new Product("p09", "Name 9", 32, "Description for Product 9", R.drawable.green_circle));
 
         createColumns();
-        fillData(products);
+        fillData(users);
     }
 
     private void createColumns() {
@@ -107,11 +106,11 @@ public class ThirdFragment extends Fragment {
                 TableRow.LayoutParams.WRAP_CONTENT));
 
         // Id Column
-        TextView textViewId = new TextView(getContext());
-        textViewId.setText("Id");
-        textViewId.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        textViewId.setPadding(5, 5, 5, 0);
-        tableRow.addView(textViewId);
+//        TextView textViewId = new TextView(getContext());
+//        textViewId.setText("Id");
+//        textViewId.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+//        textViewId.setPadding(5, 5, 5, 0);
+//        tableRow.addView(textViewId);
 
         // Name Column
         TextView textViewName = new TextView(getContext());
@@ -120,19 +119,19 @@ public class ThirdFragment extends Fragment {
         textViewName.setPadding(5, 5, 5, 0);
         tableRow.addView(textViewName);
 
-        // Price Column
-        TextView textViewPrice = new TextView(getContext());
-        textViewPrice.setText("Price");
-        textViewPrice.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        textViewPrice.setPadding(5, 5, 5, 0);
-        tableRow.addView(textViewPrice);
+        // Score Column
+        TextView textViewScore = new TextView(getContext());
+        textViewScore.setText("Score");
+        textViewScore.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        textViewScore.setPadding(5, 5, 5, 0);
+        tableRow.addView(textViewScore);
 
         // Photo Column
-        TextView textViewPhoto = new TextView(getContext());
-        textViewPhoto.setText("Photo");
-        textViewPhoto.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        textViewPhoto.setPadding(5, 5, 5, 0);
-        tableRow.addView(textViewPhoto);
+//        TextView textViewPhoto = new TextView(getContext());
+//        textViewPhoto.setText("Photo");
+//        textViewPhoto.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+//        textViewPhoto.setPadding(5, 5, 5, 0);
+//        tableRow.addView(textViewPhoto);
 
         tableLayout.addView(tableRow, new TableLayout.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT,
@@ -145,32 +144,32 @@ public class ThirdFragment extends Fragment {
                 TableRow.LayoutParams.WRAP_CONTENT));
 
         // Id Column
-        textViewId = new TextView(getContext());
-        textViewId.setText("-----------");
-        textViewId.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        textViewId.setPadding(5, 5, 5, 0);
-        tableRow.addView(textViewId);
+//        textViewId = new TextView(getContext());
+//        textViewId.setText("-----------");
+//        textViewId.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+//        textViewId.setPadding(5, 5, 5, 0);
+//        tableRow.addView(textViewId);
 
         // Name Column
         textViewName = new TextView(getContext());
-        textViewName.setText("-----------");
+//        textViewName.setText("-----------");
         textViewName.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
         textViewName.setPadding(5, 5, 5, 0);
         tableRow.addView(textViewName);
 
-        // Price Column
-        textViewPrice = new TextView(getContext());
-        textViewPrice.setText("-----------");
-        textViewPrice.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        textViewPrice.setPadding(5, 5, 5, 0);
-        tableRow.addView(textViewPrice);
+        // Score Column
+        textViewScore = new TextView(getContext());
+//        textViewScore.setText("-----------");
+        textViewScore.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        textViewScore.setPadding(5, 5, 5, 0);
+        tableRow.addView(textViewScore);
 
         // Photo Column
-        textViewPhoto = new TextView(getContext());
-        textViewPhoto.setText("-------------------------");
-        textViewPhoto.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        textViewPhoto.setPadding(5, 5, 5, 0);
-        tableRow.addView(textViewPhoto);
+//        textViewPhoto = new TextView(getContext());
+//        textViewPhoto.setText("-------------------------");
+//        textViewPhoto.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+//        textViewPhoto.setPadding(5, 5, 5, 0);
+//        tableRow.addView(textViewPhoto);
 
         tableLayout.addView(tableRow, new TableLayout.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT,
@@ -178,8 +177,8 @@ public class ThirdFragment extends Fragment {
 
     }
 
-    private void fillData(List<Product> products) {
-        for (Product product : products) {
+    private void fillData(List<User> users) {
+        for (User user : users) {
             TableRow tableRow = new TableRow(getContext());
             tableRow.setLayoutParams(new TableRow.LayoutParams(
                     TableRow.LayoutParams.MATCH_PARENT,
@@ -196,30 +195,32 @@ public class ThirdFragment extends Fragment {
             });
 
             // Id Column
-            TextView textViewId = new TextView(getContext());
-            textViewId.setText(product.getId());
-            textViewId.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-            textViewId.setPadding(5, 5, 5, 0);
-            tableRow.addView(textViewId);
+//            TextView textViewId = new TextView(getContext());
+//            textViewId.setText(product.getId());
+//            textViewId.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+//            textViewId.setPadding(5, 5, 5, 0);
+//            tableRow.addView(textViewId);
 
             // Name Column
             TextView textViewName = new TextView(getContext());
-            textViewName.setText(product.getName());
+            textViewName.setText(user.getName());
             textViewName.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
             textViewName.setPadding(5, 5, 5, 0);
             tableRow.addView(textViewName);
 
-            // Price Column
-            TextView textViewPrice = new TextView(getContext());
-            textViewPrice.setText(getText(R.string.usd) + String.valueOf(product.getPrice()));
-            textViewPrice.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-            textViewPrice.setPadding(5, 5, 5, 0);
-            tableRow.addView(textViewPrice);
+            // Score Column
+            TextView textViewScore = new TextView(getContext());
+            textViewScore.setText(String.valueOf(user.getScore()));
+            textViewScore.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+            textViewScore.setPadding(5, 5, 5, 0);
+            tableRow.addView(textViewScore);
 
             // Photo Column
-            ImageView imageViewPhoto = new ImageView(getContext());
-            imageViewPhoto.setImageResource(product.getPhoto());
-            tableRow.addView(imageViewPhoto);
+//            ImageView imageViewPhoto = new ImageView(getContext());
+//            imageViewPhoto.setImageResource(product.getPhoto());
+//            tableRow.addView(imageViewPhoto);
+//            System.out.println(imageViewPhoto);
+//            System.out.println(product.getPhoto());
 
             tableLayout.addView(tableRow, new TableLayout.LayoutParams(
                     TableRow.LayoutParams.MATCH_PARENT,
