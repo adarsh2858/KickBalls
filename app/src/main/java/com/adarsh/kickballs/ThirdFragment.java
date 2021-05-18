@@ -1,10 +1,12 @@
 package com.adarsh.kickballs;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -12,10 +14,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,8 +36,9 @@ public class ThirdFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public static List<User> users = new ArrayList<User>();
     private TableLayout tableLayout;
-
+    private LinearLayout rootLayout;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -66,8 +75,22 @@ public class ThirdFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull  View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        SharedPreferences mPrefs = this.getActivity().getPreferences(MODE_PRIVATE);
+        User myObject = new User("p03", "Nilam", 52, "Description for Score 3", R.drawable.green_circle);
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(myObject);
+        //set variables of 'myObject', etc.
+        prefsEditor.putString("MyObject", json);
+        prefsEditor.commit();
+
+        String json2 = mPrefs.getString("MyObject", "");
+        User obj = gson.fromJson(json2, User.class);
+        System.out.println(json2);
+        System.out.println("json");
         initView();
         loadData();
     }
@@ -81,21 +104,41 @@ public class ThirdFragment extends Fragment {
 
     private void initView() {
         tableLayout = getView().findViewById(R.id.tableLayoutProduct);
+        rootLayout = getView().findViewById(R.id.rootLayout);
     }
 
     private void loadData() {
-        List<User> users = new ArrayList<User>();
-        users.add(new User("p01", "Adarsh", 20, "Description for Score 1", R.drawable.green_circle));
-//        products.add(new Product("p02", "Name 2", 8, "Description for Product 2", R.drawable.green_circle));
-//        products.add(new Product("p03", "Name 3", 9, "Description for Product 3", R.drawable.green_circle));
-//        products.add(new Product("p04", "Name 4", 11, "Description for Product 4", R.drawable.green_circle));
-//        products.add(new Product("p05", "Name 5", 5, "Description for Product 5", R.drawable.green_circle));
-//        products.add(new Product("p06", "Name 6", 21, "Description for Product 6", R.drawable.green_circle));
-//        products.add(new Product("p07", "Name 7", 15, "Description for Product 7", R.drawable.green_circle));
-//        products.add(new Product("p08", "Name 8", 8, "Description for Product 8", R.drawable.green_circle));
-//        products.add(new Product("p09", "Name 9", 32, "Description for Product 9", R.drawable.green_circle));
+//        if (users.size() == 0)
+//            users.add(new User("p01", "Adarsh", 20, "Description for Score 1", R.drawable.green_circle));
 
-        createColumns();
+        if (users.size() != 0)
+            createColumns();
+        else {
+            ConstraintLayout root = new ConstraintLayout(getContext());
+            root.setLayoutParams(new ConstraintLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+
+            ConstraintSet constraintSet = new ConstraintSet();
+
+            TextView noDataAvailable = new TextView(getContext());
+            noDataAvailable.setText("No Data Available");
+            noDataAvailable.setId(R.id.noData);
+
+            root.addView(noDataAvailable);
+
+            constraintSet.constrainHeight(noDataAvailable.getId(), ConstraintSet.WRAP_CONTENT);
+            constraintSet.constrainWidth(noDataAvailable.getId(), ConstraintSet.WRAP_CONTENT);
+
+            constraintSet.connect(noDataAvailable.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
+            constraintSet.connect(noDataAvailable.getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
+            constraintSet.connect(noDataAvailable.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP);
+            constraintSet.connect(noDataAvailable.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
+
+            constraintSet.applyTo(root);
+            rootLayout.addView(root);
+        }
+
         fillData(users);
     }
 
@@ -125,6 +168,7 @@ public class ThirdFragment extends Fragment {
         textViewScore.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
         textViewScore.setPadding(5, 5, 5, 0);
         tableRow.addView(textViewScore);
+
 
         // Photo Column
 //        TextView textViewPhoto = new TextView(getContext());

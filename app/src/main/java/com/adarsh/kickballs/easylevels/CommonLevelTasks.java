@@ -1,6 +1,7 @@
 package com.adarsh.kickballs.easylevels;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
@@ -13,8 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.adarsh.kickballs.MainActivity;
 import com.adarsh.kickballs.R;
+import com.adarsh.kickballs.ThirdFragment;
+import com.adarsh.kickballs.User;
 import com.adarsh.kickballs.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +26,10 @@ import java.util.Timer;
 
 public class CommonLevelTasks extends AppCompatActivity implements View.OnClickListener {
 
+    protected final int minimum = 1, maximum = 10;
     protected List<Button> mButtons = new ArrayList<>(9);
     protected Button startPauseButton, stopButton, resetButton, mButtonLogin;
     protected TextView mTextView, mCountDownText;
-    protected final int minimum = 1, maximum = 10;
     protected int score = 0;
     protected long timeLeft;
     protected Button mButton1, mButton2, mButton3, mButton4, mButton5, mButton6, mButton7, mButton8, mButton9;
@@ -44,7 +48,7 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
         }
 
         //  To fetch drawables with theme attributes
-        redBall= getResources().getDrawable(R.drawable.red_ball);
+        redBall = getResources().getDrawable(R.drawable.red_ball);
         whiteBall = getResources().getDrawable(R.drawable.white_ball);
         pinkBall = getResources().getDrawable(R.drawable.pink_ball);
         footBall = getResources().getDrawable(R.drawable.foot_ball);
@@ -58,17 +62,17 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(getApplicationContext(), "Stopped!", Toast.LENGTH_SHORT).show();
                 startPauseButton.setText(getString(R.string.start));
 
-                if(mediaPlayer!=null){
+                if (mediaPlayer != null) {
                     mediaPlayer.stop();
-                    mediaPlayer=null;
+                    mediaPlayer = null;
                 }
 
-                if(timer!=null){
+                if (timer != null) {
                     timer.cancel();
                     timer = null;
                 }
 
-                if(displayTime!=null){
+                if (displayTime != null) {
                     mCountDownText.setText(R.string.initial_time);
                     displayTime.cancel();
                     displayTime = null;
@@ -80,12 +84,16 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getApplicationContext(), "RESET ALL", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Final Score : " + score, Toast.LENGTH_SHORT).show();
+
+        if (score != 0)
+            ThirdFragment.users.add(new User("p02", "Aditi", score, "Description for Score 2", R.drawable.green_circle));
+
         score = 0;
         mTextView.setText(getResources().getString(R.string.dynamic_score, score));
         startPauseButton.setText(getString(R.string.start));
 
-        if(displayTime!=null){
+        if (displayTime != null) {
             timer.cancel();
             mCountDownText.setText(R.string.initial_time);
             displayTime.cancel();
@@ -96,10 +104,9 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
 
     // Login method to switch view to login page
     public void loginFromGame(View view) {
-        if (fAuth.getCurrentUser() != null){
+        if (fAuth.getCurrentUser() != null) {
             logout(view);
-        }
-        else {
+        } else {
             if (mediaPlayer != null) {
                 mediaPlayer.stop();
                 mediaPlayer = null;
@@ -110,7 +117,7 @@ public class CommonLevelTasks extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    public void logout(View view){
+    public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(getApplicationContext(), "Signed Out Successfully", Toast.LENGTH_SHORT).show();
         // After signing out, redirect user to first page with register, sign in and guest option
