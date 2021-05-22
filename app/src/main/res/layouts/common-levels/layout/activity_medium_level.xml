@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pool_table_landscape">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/row_fifth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row_fourth"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/btn_pool_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/pool_ball_1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_fourth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row_third"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/btn_pool_2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/pool_ball_2" />
+
+            <Button
+                android:id="@+id/btn_pool_3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/pool_ball_3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp">
+<!--            android:layout_below="@id/row_second"-->
+
+            <Button
+                android:id="@+id/btn_pool_4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/pool_ball_4" />
+
+            <Button
+                android:id="@+id/btn_pool_5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/pool_ball_5" />
+
+            <Button
+                android:id="@+id/btn_pool_6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/pool_ball_6" />
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/row_second"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="true">-->
+<!--&lt;!&ndash;            android:layout_below="@id/row_first"&ndash;&gt;-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_7"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@drawable/pool_ball_7" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_8"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginHorizontal="5dp"-->
+<!--                android:background="@drawable/pool_ball_8" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_9"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginRight="5dp"-->
+<!--                android:background="@drawable/pool_ball_9" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_10"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@drawable/pool_ball_10" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/row_first"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:padding="10dp">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_11"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@drawable/pool_ball_11" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_12"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginHorizontal="5dp"-->
+<!--                android:background="@drawable/pool_ball_12" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_13"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@drawable/pool_ball_13" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_14"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginHorizontal="5dp"-->
+<!--                android:background="@drawable/pool_ball_14" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_pool_15"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@drawable/pool_ball_15" />-->
+<!--        </LinearLayout>-->
+
+    </RelativeLayout>
+</RelativeLayout>

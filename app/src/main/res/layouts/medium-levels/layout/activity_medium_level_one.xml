@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".mediumlevels.MediumLevelOne">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MEDIUM LEVEL 1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    <include layout="@layout/activity_medium_level" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
