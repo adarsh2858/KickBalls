@@ -27,10 +27,10 @@
 
         <LinearLayout
             android:id="@+id/row_fourth"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/row_third"
-            android:layout_centerHorizontal="true">
+            android:paddingHorizontal="35dp">
 
             <Button
                 android:id="@+id/btn_pool_2"
