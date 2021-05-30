@@ -6,4 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".easylevels.NinthLevel">
 
+    <include layout="@layout/activity_easy_level"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

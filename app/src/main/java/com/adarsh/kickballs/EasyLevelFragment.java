@@ -12,9 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.adarsh.kickballs.easylevels.EighthLevel;
 import com.adarsh.kickballs.easylevels.FifthLevel;
 import com.adarsh.kickballs.easylevels.FirstLevel;
 import com.adarsh.kickballs.easylevels.FourthLevel;
+import com.adarsh.kickballs.easylevels.NinthLevel;
 import com.adarsh.kickballs.easylevels.SecondLevel;
 import com.adarsh.kickballs.easylevels.SeventhLevel;
 import com.adarsh.kickballs.easylevels.SixthLevel;
@@ -22,7 +24,7 @@ import com.adarsh.kickballs.easylevels.ThirdLevel;
 
 public class EasyLevelFragment extends Fragment {
 
-    Button firstLevel, secondLevel, thirdLevel, fourthLevel, fifthLevel, sixthLevel, seventhLevel;
+    Button firstLevel, secondLevel, thirdLevel, fourthLevel, fifthLevel, sixthLevel, seventhLevel, eighthLevel, ninthLevel;
 
     @Nullable
     @Override
@@ -36,6 +38,8 @@ public class EasyLevelFragment extends Fragment {
         fifthLevel = rootView.findViewById(R.id.btn_5);
         sixthLevel = rootView.findViewById(R.id.btn_6);
         seventhLevel = rootView.findViewById(R.id.btn_7);
+        eighthLevel = rootView.findViewById(R.id.btn_8);
+        ninthLevel = rootView.findViewById(R.id.btn_9);
 
         firstLevel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +94,22 @@ public class EasyLevelFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Level 7", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), SeventhLevel.class));
+            }
+        });
+
+        eighthLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Level 8", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), EighthLevel.class));
+            }
+        });
+
+        ninthLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Level 9", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), NinthLevel.class));
             }
         });
 
