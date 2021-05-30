@@ -16,12 +16,13 @@ import com.adarsh.kickballs.easylevels.FifthLevel;
 import com.adarsh.kickballs.easylevels.FirstLevel;
 import com.adarsh.kickballs.easylevels.FourthLevel;
 import com.adarsh.kickballs.easylevels.SecondLevel;
+import com.adarsh.kickballs.easylevels.SeventhLevel;
 import com.adarsh.kickballs.easylevels.SixthLevel;
 import com.adarsh.kickballs.easylevels.ThirdLevel;
 
 public class EasyLevelFragment extends Fragment {
 
-    Button firstLevel, secondLevel, thirdLevel, fourthLevel, fifthLevel, sixthLevel;
+    Button firstLevel, secondLevel, thirdLevel, fourthLevel, fifthLevel, sixthLevel, seventhLevel;
 
     @Nullable
     @Override
@@ -34,6 +35,7 @@ public class EasyLevelFragment extends Fragment {
         fourthLevel = rootView.findViewById(R.id.btn_4);
         fifthLevel = rootView.findViewById(R.id.btn_5);
         sixthLevel = rootView.findViewById(R.id.btn_6);
+        seventhLevel = rootView.findViewById(R.id.btn_7);
 
         firstLevel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +82,14 @@ public class EasyLevelFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Level 6", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), SixthLevel.class));
+            }
+        });
+
+        seventhLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Level 7", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), SeventhLevel.class));
             }
         });
 
