@@ -130,7 +130,7 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
             @Override
             public void run() {
                 final int[] randomNumbers = new Random().ints(minimum, maximum).distinct().limit(6).toArray();
-                final int randomNumber = randomNumbers[0];
+                final int whiteRandomNumber = randomNumbers[0];
                 final int golfRandomNumber = randomNumbers[1];
                 final int pinkRandomNumber = randomNumbers[2];
                 final int basketRandomNumber = randomNumbers[3];
@@ -142,7 +142,7 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                     @Override
                     public void run(){
                         // update ui here else wrong thread exception
-                        mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.white_ball);
+                        mButtons.get(whiteRandomNumber - 1).setBackgroundResource(R.drawable.white_ball);
                         mButtons.get(golfRandomNumber - 1).setBackgroundResource(R.drawable.golf_ball);
                         mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.pink_ball);
                         mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.basket_ball);
@@ -151,29 +151,29 @@ public class SixthLevel extends CommonLevelTasks implements DefaultLevel, View.O
                     }
                 });
 
-                mButtons.get(randomNumber - 1).setOnClickListener(new View.OnClickListener() {
+                mButtons.get(redRandomNumber - 1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mTextView.setText(getResources().getString(R.string.dynamic_score, ++score));
-                        mButtons.get(randomNumber - 1).setOnClickListener(null);
+                        mButtons.get(redRandomNumber - 1).setOnClickListener(null);
                     }
                 });
                 buttonTimer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        mButtons.get(randomNumber - 1).setOnClickListener(null);
+                        mButtons.get(redRandomNumber - 1).setOnClickListener(null);
 
                         // Change the white cricket ball to red cricket ball after 750 milliseconds
                         runOnUiThread(new Runnable(){
                             @Override
                             public void run(){
                                 // update ui here else wrong thread exception
-                                mButtons.get(randomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
+                                mButtons.get(whiteRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                                 mButtons.get(golfRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                                 mButtons.get(pinkRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                                 mButtons.get(basketRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                                 mButtons.get(footRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
-                                mButtons.get(redRandomNumber - 1).setBackgroundResource(R.drawable.volley_ball);
                             }
                         });
                     }
