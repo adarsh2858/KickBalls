@@ -24,9 +24,5 @@ public class MediumLevelTwo extends AppCompatActivity {
         btnPool7 = findViewById(R.id.btn_pool_1);
 
         btnPool7.setBackground(getDrawable(R.drawable.pool_ball_7));
-        btnPool4.getBackground().setAlpha(255);
-        btnPool5.getBackground().setAlpha(255);
-        btnPool6.getBackground().setAlpha(255);
-        btnPool7.getBackground().setAlpha(255);
     }
 }

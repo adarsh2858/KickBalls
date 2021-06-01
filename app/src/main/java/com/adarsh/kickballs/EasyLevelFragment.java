@@ -89,6 +89,10 @@ public class EasyLevelFragment extends Fragment {
             }
         });
 
+        seventhLevel.setAlpha(0.5f);
+        eighthLevel.setAlpha(0.5f);
+        ninthLevel.setAlpha(0.5f);
+
         seventhLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

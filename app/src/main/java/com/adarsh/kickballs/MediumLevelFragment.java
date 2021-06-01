@@ -66,18 +66,18 @@ public class MediumLevelFragment extends Fragment {
             }
         });
 
-        fourth.getBackground().setAlpha(120);
-        fifth.getBackground().setAlpha(120);
-        sixth.getBackground().setAlpha(120);
-        seventh.getBackground().setAlpha(120);
-        eighth.getBackground().setAlpha(120);
-        ninth.getBackground().setAlpha(120);
-        tenth.getBackground().setAlpha(120);
-        eleventh.getBackground().setAlpha(120);
-        twelfth.getBackground().setAlpha(120);
-        thirteenth.getBackground().setAlpha(120);
-        fourteenth.getBackground().setAlpha(120);
-        fifteenth.getBackground().setAlpha(120);
+        fourth.setAlpha(0.5f);
+        fifth.setAlpha(0.5f);
+        sixth.setAlpha(0.5f);
+        seventh.setAlpha(0.5f);
+        eighth.setAlpha(0.5f);
+        ninth.setAlpha(0.5f);
+        tenth.setAlpha(0.5f);
+        eleventh.setAlpha(0.5f);
+        twelfth.setAlpha(0.5f);
+        thirteenth.setAlpha(0.5f);
+        fourteenth.setAlpha(0.5f);
+        fifteenth.setAlpha(0.5f);
 
         return rootView;
     }
