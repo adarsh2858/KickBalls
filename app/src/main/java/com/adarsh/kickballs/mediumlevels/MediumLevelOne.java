@@ -29,6 +29,10 @@ public class MediumLevelOne extends AppCompatActivity implements Animation.Anima
         btnPool5 = findViewById(R.id.btn_pool_5);
         btnPool6 = findViewById(R.id.btn_pool_6);
 
+        btnPool4.getBackground().setAlpha(255);
+        btnPool5.getBackground().setAlpha(255);
+        btnPool6.getBackground().setAlpha(255);
+
         animationBall1 = new TranslateAnimation(0, 750, 0, 0);
         animationBall1.setDuration(4000);
         animationBall1.setFillAfter(false);
