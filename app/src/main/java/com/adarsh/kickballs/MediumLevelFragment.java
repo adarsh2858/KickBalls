@@ -18,7 +18,8 @@ import com.adarsh.kickballs.mediumlevels.MediumLevelTwo;
 
 public class MediumLevelFragment extends Fragment {
 
-    Button firstMediumLevel, secondMediumLevel, thirdMediumLevel;
+    Button firstMediumLevel, secondMediumLevel, thirdMediumLevel, fourth, fifth, sixth, seventh,
+            eighth, ninth, tenth, eleventh, twelfth, thirteenth, fourteenth, fifteenth;
 
     @Nullable
     @Override
@@ -28,6 +29,18 @@ public class MediumLevelFragment extends Fragment {
         firstMediumLevel = rootView.findViewById(R.id.btn_pool_1);
         secondMediumLevel = rootView.findViewById(R.id.btn_pool_2);
         thirdMediumLevel = rootView.findViewById(R.id.btn_pool_3);
+        fourth = rootView.findViewById(R.id.btn_pool_4);
+        fifth = rootView.findViewById(R.id.btn_pool_5);
+        sixth = rootView.findViewById(R.id.btn_pool_6);
+        seventh = rootView.findViewById(R.id.btn_pool_7);
+        eighth = rootView.findViewById(R.id.btn_pool_8);
+        ninth = rootView.findViewById(R.id.btn_pool_9);
+        tenth = rootView.findViewById(R.id.btn_pool_10);
+        eleventh = rootView.findViewById(R.id.btn_pool_11);
+        twelfth = rootView.findViewById(R.id.btn_pool_12);
+        thirteenth = rootView.findViewById(R.id.btn_pool_13);
+        fourteenth = rootView.findViewById(R.id.btn_pool_14);
+        fifteenth = rootView.findViewById(R.id.btn_pool_15);
 
         firstMediumLevel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +65,19 @@ public class MediumLevelFragment extends Fragment {
                 startActivity(new Intent(getActivity(), MediumLevelThree.class));
             }
         });
+
+        fourth.getBackground().setAlpha(120);
+        fifth.getBackground().setAlpha(120);
+        sixth.getBackground().setAlpha(120);
+        seventh.getBackground().setAlpha(120);
+        eighth.getBackground().setAlpha(120);
+        ninth.getBackground().setAlpha(120);
+        tenth.getBackground().setAlpha(120);
+        eleventh.getBackground().setAlpha(120);
+        twelfth.getBackground().setAlpha(120);
+        thirteenth.getBackground().setAlpha(120);
+        fourteenth.getBackground().setAlpha(120);
+        fifteenth.getBackground().setAlpha(120);
 
         return rootView;
     }
