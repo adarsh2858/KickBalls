@@ -29,7 +29,7 @@ public class MediumLevelOne extends AppCompatActivity implements Animation.Anima
         btnPool5 = findViewById(R.id.btn_pool_5);
         btnPool6 = findViewById(R.id.btn_pool_6);
 
-        animationBall1 = new TranslateAnimation(0, 750, 0, 0);
+        animationBall1 = new TranslateAnimation(0, 750, 1100, 1100);
         animationBall1.setDuration(4000);
         animationBall1.setFillAfter(false);
         animationBall1.setAnimationListener(this);
@@ -77,7 +77,7 @@ public class MediumLevelOne extends AppCompatActivity implements Animation.Anima
 
     @Override
     public void onAnimationRepeat(Animation oldAnimation) {
-        TranslateAnimation animationBall1Return = new TranslateAnimation(750, 0, 0, 0);
+        TranslateAnimation animationBall1Return = new TranslateAnimation(750, 0, 1100, 1100);
         animationBall1Return.setDuration(4000);
         animationBall1Return.setFillAfter(false);
         animationBall1Return.setAnimationListener(this);
