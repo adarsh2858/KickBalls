@@ -29,7 +29,7 @@
         <LinearLayout
             android:id="@+id/row_fourth"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingHorizontal="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -51,7 +51,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/row_third"
             android:layout_width="match_parent"
-            android:layout_height="850px"
+            android:layout_height="match_parent"
             android:paddingHorizontal="35dp"
             app:layout_constraintBottom_toTopOf="@+id/row_fourth"
             app:layout_constraintTop_toTopOf="parent">

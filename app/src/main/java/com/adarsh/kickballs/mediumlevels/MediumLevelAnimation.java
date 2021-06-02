@@ -14,25 +14,25 @@ public class MediumLevelAnimation extends MediumLevelOne implements Animation.An
 
     @Override
     public void onAnimationRepeat(Animation animation) {
-        TranslateAnimation animationBall2Return = new TranslateAnimation(0, 350, 0, 0);
+        TranslateAnimation animationBall2Return = new TranslateAnimation(0, 350, 950, 950);
         animationBall2Return.setDuration(2000);
         animationBall2Return.setFillAfter(false);
         animationBall2Return.setAnimationListener(this);
         MediumLevelOne.btnPool2.startAnimation(animationBall2Return);
 
-        TranslateAnimation animationBall3Return = new TranslateAnimation(600, 350, 0, 0);
+        TranslateAnimation animationBall3Return = new TranslateAnimation(600, 350, 950, 950);
         animationBall3Return.setDuration(2000);
         animationBall3Return.setFillAfter(false);
         animationBall3Return.setAnimationListener(this);
         MediumLevelOne.btnPool3.startAnimation(animationBall3Return);
 
-        TranslateAnimation animationBall4Return = new TranslateAnimation(50, 200, 60, 700);
+        TranslateAnimation animationBall4Return = new TranslateAnimation(50, 200, 100, 800);
         animationBall4Return.setDuration(2000);
         animationBall4Return.setFillAfter(false);
         animationBall4Return.setAnimationListener(this);
         MediumLevelOne.btnPool4.startAnimation(animationBall4Return);
 
-        TranslateAnimation animationBall5Return = new TranslateAnimation(400, 200, 50, 700);
+        TranslateAnimation animationBall5Return = new TranslateAnimation(400, 200, 100, 800);
         animationBall5Return.setDuration(2000);
         animationBall5Return.setFillAfter(false);
         animationBall5Return.setAnimationListener(this);
