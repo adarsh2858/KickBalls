@@ -71,6 +71,7 @@
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="5dp"
                 android:background="@drawable/pool_ball_5"
+                android:onClick="btn5Click"
                 app:layout_constraintLeft_toRightOf="@+id/btn_pool_4"
                 app:layout_constraintTop_toTopOf="parent"/>
 
